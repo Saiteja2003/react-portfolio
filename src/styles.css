@@ -106,25 +106,15 @@ body, a, button {
 }
 
 .custom-cursor {
-  /* 1. New Size */
   width: 30px;
   height: 30px;
-
-  /* 2. New Color */
   background-color: white; 
-  
   border-radius: 50%;
   position: fixed;
-  
-  /* Centering offset (must be half of width/height) */
   top: -15px; 
   left: -15px;
-  
   pointer-events: none;
-  
-  /* 3. New "Feel" (smoother animation) */
   transition: transform 0.2s ease-out;
-  
   mix-blend-mode: difference;
   z-index: 9999;
 }
@@ -142,16 +132,12 @@ header {
   position: sticky;
   top: 0;
   z-index: 100;
-  
-  /* --- Add/Update these properties --- */
-  width: 100%; /* 1. Make the header itself span the full width */
+  width: 100%;
   display: flex;
-  justify-content: space-between; /* 2. This will now work as expected */
+  flex-direction: row; /* Ensures side-by-side layout */
+  justify-content: space-between;
   align-items: center;
-  padding: 0.75rem 3rem; /* 3. Use padding to create space inside */
-  
-  /* --- Remove any leftover properties like text-align --- */
-  /* text-align: center; */
+  padding: 0.75rem 3rem; /* Desktop padding */
 }
 
 header h1 {
@@ -191,8 +177,8 @@ header nav a {
 footer {
   text-align: center;
   padding: 2rem;
-  background-color: var(--primary-color);
-  color: white;
+  background-color: white;
+  color:black;
 }
 
 footer p {
@@ -200,8 +186,24 @@ footer p {
 }
 
 footer a {
-    color: var(--bg-color);
+    text-wrap: wrap;
+    color: var(--accent-color);
     font-weight: bold;
+}
+footer .email-link {
+  background-color: black;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  border-radius: 20px; 
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+/* Add a subtle hover effect */
+footer .email-link:hover {
+  background-color: #333; /* A slightly lighter black */
+  color: white; /* Ensure text color stays white on hover */
 }
 
 section[id] {
@@ -211,35 +213,73 @@ section[id] {
 
 /* --- 4. Media Queries for Responsiveness --- */
 
-/* For tablets and larger screens (768px and up) */
-@media (min-width: 768px) {
-    h2 {
-        font-size: 3rem;
-    }
+/* src/styles.css */
 
-    /* Header */
-    header {
-        flex-direction: row; /* Horizontal layout on larger screens */
-        justify-content: space-between;
-        padding: 1.5rem 3rem;
-    }
-
-    header h1 {
-        margin-bottom: 0;
-    }
-
-    header nav a {
-        margin: 0 15px;
-    }
-
-    /* Projects Grid */
-    #projects .projects-grid {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr); /* Two columns on tablets */
-    }
+/* --- CURSOR STYLES --- */
+.custom-cursor {
+  width: 30px;
+  height: 30px;
+  background-color: white; 
+  border-radius: 50%;
+  position: fixed;
+  top: -15px; 
+  left: -15px;
+  pointer-events: none;
+  transition: transform 0.2s ease-out;
+  mix-blend-mode: difference;
+  z-index: 9999;
 }
 
-/* For desktops and larger screens (1024px and up) */
+body, a, button {
+  /* This hides the default cursor on devices that can hover (desktops) */
+  cursor: none;
+}
+
+/* --- HEADER STYLES (Mobile First) --- */
+header {
+  background-color: var(--card-bg-color);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  width: 100%;
+  display: flex;
+  
+  /* Mobile-first styles: stacked layout */
+  flex-direction: column;
+  padding: 1rem 1.5rem;
+  gap: 0.5rem;
+}
+
+header h1 {
+  font-size: 1.5rem;
+  margin: 0;
+}
+
+/* --- MEDIA QUERIES --- */
+
+/* Hides custom cursor on touch devices (phones AND tablets) */
+@media (hover: none) and (pointer: coarse) {
+  .custom-cursor {
+    display: none;
+  }
+  
+  body, a, button {
+    /* Show the default cursor on touch devices */
+    cursor: default;
+  }
+}
+
+/* Applies styles for laptops and larger screens */
+@media (min-width: 768px) {
+  header {
+    /* Laptop styles: side-by-side layout */
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 3rem;
+  }
+}
 @media (min-width: 1024px) {
     #projects .projects-grid {
         grid-template-columns: repeat(3, 1fr); /* Three columns on desktops */
