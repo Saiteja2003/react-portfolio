@@ -3,11 +3,12 @@
 import React, { useEffect, useState } from 'react'; // 1. Import useEffect
 import Lenis from '@studio-freight/lenis'; // 2. Import Lenis
 
-import Header from './components/Header';
-import About from './components/About';
-import Projects from './components/Projects';
-import Footer from './components/Footer';
+import Header from './components/header';
+import About from './components/about';
+import Projects from './components/projects';
+import Footer from './components/footer';
 import CustomCursor from './components/CustomCursor';
+import Home from './components/Home';
 
 function App() {
   const [lenis, setLenis] = useState(null); // 2. Add state to hold the Lenis instance
@@ -35,6 +36,7 @@ function App() {
       <CustomCursor />
       {/* 4. Pass the lenis instance down to the Header */}
       <Header lenis={lenis} />
+      <Home lenis={lenis}/>
       <main>
         <About />
         <Projects />

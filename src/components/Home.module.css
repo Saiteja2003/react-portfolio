@@ -1,0 +1,52 @@
+/* src/components/Home.module.css */
+
+/* Add a wrapper to group the text */
+.contentWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Style for the new subtitle */
+.subtitle {
+  font-size: 1.2rem;
+  color: var(--text-color);
+  margin-top: 1rem;
+}
+
+/* Style for the scroll-down button container */
+.scrollButton {
+  position: absolute;
+  bottom: 2rem;
+  width: 24px;
+  height: 40px;
+  border: 2px solid var(--primary-color);
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+/* The moving dot inside the button */
+.scrollButton span {
+  position: absolute;
+  top: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 4px;
+  height: 8px;
+  background-color: var(--primary-color);
+  border-radius: 2px;
+  animation: scroll-bounce 1.5s ease-out infinite;
+}
+
+/* The animation for the dot */
+@keyframes scroll-bounce {
+  0% {
+    transform: translate(-50%, 0);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-50%, 12px);
+    opacity: 0;
+  }
+}
