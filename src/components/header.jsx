@@ -5,27 +5,32 @@ import React from 'react';
 function Header({ lenis }) {
   const handleNavClick = (event, targetSelector) => {
     event.preventDefault();
-    
-    // 1. Check the screen width to determine the scroll duration
-    // If screen is less than 768px wide (mobile), duration is 0.8s. Otherwise, it's 2s.
-    const scrollDuration = window.innerWidth < 768 ? 0.8 : 2;
-
-    if (lenis) {
-      // 2. Use the dynamic duration in the Lenis scroll command
-      lenis.scrollTo(targetSelector, {
-        duration: scrollDuration,
-        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-      });
-    }
-
     const targetElement = document.querySelector(targetSelector);
-    if (targetElement) {
-      targetElement.classList.add('section-flash');
-      // 3. Use the same duration (in milliseconds) for the flash effect
-      setTimeout(() => {
-        targetElement.classList.remove('section-flash');
-      }, scrollDuration * 1000);
+
+    if (!targetElement) return; // Exit if the target doesn't exist
+
+    // --- This is the new logic ---
+    if (window.innerWidth < 768) {
+      // --- MOBILE LOGIC ---
+      // Use the browser's native, high-performance smooth scroll
+      targetElement.scrollIntoView({ behavior: 'smooth' });
+    } else {
+      // --- DESKTOP LOGIC ---
+      // Use Lenis for the custom, longer animation
+      if (lenis) {
+        lenis.scrollTo(targetElement, {
+          duration: 2, // The 2-second duration you like on desktop
+          easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+        });
+      }
     }
+
+    // The "flash" highlight works for both
+    targetElement.classList.add('section-flash');
+    const animationDuration = window.innerWidth < 768 ? 800 : 2000; // Match duration
+    setTimeout(() => {
+      targetElement.classList.remove('section-flash');
+    }, animationDuration);
   };
 
   return (
@@ -33,7 +38,7 @@ function Header({ lenis }) {
       <a 
         href="/" 
         className="home-link cursor-grow-target" 
-        onClick={(e) => handleNavClick(e, 0)}
+        onClick={(e) => handleNavClick(e, '#root')} // Target the main app container
       >
         <h1>Saiteja Challa</h1>
       </a>
