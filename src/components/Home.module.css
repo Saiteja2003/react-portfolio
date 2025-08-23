@@ -50,3 +50,10 @@
     opacity: 0;
   }
 }
+@media (max-width: 767px) {
+  .homeContainer {
+    /* This adds a buffer at the bottom of the screen,
+       pushing the button up and giving the text more room. */
+    padding-bottom: 15vh; 
+  }
+}
