@@ -1,19 +1,40 @@
 // src/App.jsx
 
-import React from 'react';
-import Header from './components/header';
-import About from './components/about';
-import Projects from './components/projects';
-import Footer from './components/footer';
+import React, { useEffect, useState } from 'react'; // 1. Import useEffect
+import Lenis from '@studio-freight/lenis'; // 2. Import Lenis
 
-// You can delete the default App.css or create your own styles.
-// For now, let's remove the default import.
-// import './App.css'
+import Header from './components/Header';
+import About from './components/About';
+import Projects from './components/Projects';
+import Footer from './components/Footer';
+import CustomCursor from './components/CustomCursor';
 
 function App() {
+  const [lenis, setLenis] = useState(null); // 2. Add state to hold the Lenis instance
+
+  useEffect(() => {
+    // Initialize Lenis
+    const lenisInstance = new Lenis();
+    setLenis(lenisInstance); // 3. Save the instance to state
+
+    function raf(time) {
+      lenisInstance.raf(time);
+      requestAnimationFrame(raf);
+    }
+
+    requestAnimationFrame(raf);
+
+    return () => {
+      lenisInstance.destroy();
+      setLenis(null);
+    };
+  }, []);
+
   return (
     <>
-      <Header />
+      <CustomCursor />
+      {/* 4. Pass the lenis instance down to the Header */}
+      <Header lenis={lenis} />
       <main>
         <About />
         <Projects />

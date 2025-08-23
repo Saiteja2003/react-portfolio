@@ -1,103 +1,281 @@
 /* src/styles.css */
 
-/* --- Global Styles & Variables --- */
+/* --- 1. NEW Font Import & CSS Variables (Elegant Design System) --- */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Lora:wght@400;600&display=swap');
+
 :root {
-  --primary-color: #2c3e50; /* A dark slate blue */
-  --secondary-color: #3498db; /* A bright blue */
-  --background-color: #ecf0f1; /* A light gray */
-  --text-color: #34495e; /* A dark gray-blue */
-  --card-bg-color: #ffffff;
-  --font-main: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  /* Color Palette */
+  --bg-color: #f8f9fa;            /* Light warm gray */
+  --card-bg-color: #ffffff;       /* Pure White */
+  --primary-color: #212529;      /* Dark Charcoal for headings/text */
+  --text-color: #495057;          /* Softer gray for body text */
+  --accent-color: #4a6fa5;         /* Muted, dusty blue for links/highlights */
+  --border-color: #dee2e6;        /* Subtle border color */
+  --shadow-color: rgba(33, 37, 41, 0.07);
+
+  /* Typography */
+  --font-heading: 'Lora', serif;
+  --font-body: 'Inter', sans-serif;
+
+  /* Spacing */
+  --container-width: 1100px;
+}
+#root {
+  width: 100%;
+}
+
+
+
+/* --- 2. Global & Reset Styles --- */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+html {
+  /* For Firefox */
+  scrollbar-width: none;
+  /* For Internet Explorer and Edge */
+  -ms-overflow-style: none;
+}
+
+/* For Chrome, Safari, and Opera */
+html::-webkit-scrollbar {
+  display: none;
 }
 
 body {
-  font-family: var(--font-main);
-  margin: 0;
-  background-color: var(--background-color);
+  font-family: var(--font-body); /* Use the new body font */
+  background-color: var(--bg-color);
   color: var(--text-color);
-  line-height: 1.6;
+  line-height: 1.7;
+  margin: 0;
 }
 
 main {
-  max-width: 960px;
-  margin: 2rem auto;
-  padding: 0 1rem;
+ padding-top: 2rem
 }
 
 section {
-  padding: 40px 20px;
+  padding: 3rem 1.5rem;
   margin-bottom: 2rem;
   background-color: var(--card-bg-color);
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  box-shadow: 0 8px 16px var(--shadow-color);
 }
 
 h1, h2, h3 {
+  font-family: var(--font-heading); /* Use the new heading font */
   color: var(--primary-color);
+  font-weight: 600;
+  margin-bottom: 1rem;
 }
 
 h2 {
-    border-bottom: 2px solid var(--secondary-color);
-    padding-bottom: 10px;
+    font-size: 2.5rem;
+    border-bottom: 3px solid var(--accent-color); /* Use the new accent color */
+    display: inline-block;
+    padding-bottom: 0.5rem;
 }
 
 a {
-  color: var(--secondary-color);
+  color: var(--accent-color);
   text-decoration: none;
+  font-weight: 600;
   transition: color 0.3s ease;
-}
+}  
 
 a:hover {
-  color: var(--primary-color);
+  color: var(--accent-color);
+}
+body, a, button {
+  cursor: none;
 }
 
-/* --- Header & Navigation --- */
+/* src/styles.css */
+
+.container {
+  max-width: var(--container-width); /* Our 1100px readable width */
+  margin: 0 auto; /* This centers the container */
+  padding: 0 1.5rem; /* This adds space on the sides */
+}
+
+.custom-cursor {
+  /* 1. New Size */
+  width: 30px;
+  height: 30px;
+
+  /* 2. New Color */
+  background-color: white; 
+  
+  border-radius: 50%;
+  position: fixed;
+  
+  /* Centering offset (must be half of width/height) */
+  top: -15px; 
+  left: -15px;
+  
+  pointer-events: none;
+  
+  /* 3. New "Feel" (smoother animation) */
+  transition: transform 0.2s ease-out;
+  
+  mix-blend-mode: difference;
+  z-index: 9999;
+}
+
+
+
+/* --- 3. Component Styles (Mobile-First) --- */
+
+/* Header & Navigation */
+/* src/styles.css */
+
 header {
-  background-color: var(--primary-color);
-  color: white;
-  padding: 1rem 2rem;
+  background-color: var(--card-bg-color);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  
+  /* --- Add/Update these properties --- */
+  width: 100%; /* 1. Make the header itself span the full width */
   display: flex;
-  justify-content: space-between;
+  justify-content: space-between; /* 2. This will now work as expected */
   align-items: center;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 0.75rem 3rem; /* 3. Use padding to create space inside */
+  
+  /* --- Remove any leftover properties like text-align --- */
+  /* text-align: center; */
 }
 
 header h1 {
-    color: white;
-    margin: 0;
+    font-size: 1.5rem; 
+    margin-bottom: 0;
 }
 
 header nav a {
-  color: white;
-  margin: 0 15px;
-  font-weight: bold;
+  margin: 0 10px;
+  color: var(--primary-color);
 }
-
-header nav a:hover {
-    color: var(--background-color);
+.home-link {
+  text-decoration: none;
 }
+/* Projects Section */
 
-/* --- Projects Section --- */
+
 .project-card {
-  border: 1px solid #ddd;
-  padding: 20px;
-  margin-top: 20px;
+  border: 1px solid #eee;
+  padding: 1.5rem;
   border-radius: 8px;
-  background-color: #f9f9f9;
+  background-color: var(--bg-color);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px var(--shadow-color);
 }
 
 .project-card h3 {
     margin-top: 0;
+    color: var(--secondary-color);
 }
 
-/* --- Footer --- */
+/* Footer */
 footer {
   text-align: center;
-  padding: 20px;
+  padding: 2rem;
   background-color: var(--primary-color);
   color: white;
 }
 
+footer p {
+    margin: 0;
+}
+
 footer a {
-    color: var(--background-color);
+    color: var(--bg-color);
+    font-weight: bold;
+}
+
+section[id] {
+  /* This value should be slightly more than your header's height */
+  scroll-margin-top: 100px; 
+}
+
+/* --- 4. Media Queries for Responsiveness --- */
+
+/* For tablets and larger screens (768px and up) */
+@media (min-width: 768px) {
+    h2 {
+        font-size: 3rem;
+    }
+
+    /* Header */
+    header {
+        flex-direction: row; /* Horizontal layout on larger screens */
+        justify-content: space-between;
+        padding: 1.5rem 3rem;
+    }
+
+    header h1 {
+        margin-bottom: 0;
+    }
+
+    header nav a {
+        margin: 0 15px;
+    }
+
+    /* Projects Grid */
+    #projects .projects-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr); /* Two columns on tablets */
+    }
+}
+
+/* For desktops and larger screens (1024px and up) */
+@media (min-width: 1024px) {
+    #projects .projects-grid {
+        grid-template-columns: repeat(3, 1fr); /* Three columns on desktops */
+    }
+}
+
+/* Keyframe animation for the subtle flash */
+/* 1. Prepare sections to contain the background layer */
+section[id], footer[id] {
+  position: relative;
+  /* This creates a new stacking context, which is key for the z-index */
+  isolation: isolate; 
+}
+
+/* 2. Style the background layer using a pseudo-element */
+.section-flash::before {
+  content: '';
+  position: absolute;
+  /* A modern shorthand for top: 0; right: 0; bottom: 0; left: 0; */
+  inset: 0;
+  /* Places the flash behind the content within this section */
+  z-index: -1; 
+  animation: section-highlight 1s ease-out forwards;
+  
+  /* Run the animation on this layer */
+  animation: section-highlight 1.5s ease-out forwards;
+}
+
+/* 3. Update keyframes to fade from a color to transparent */
+@keyframes section-highlight {
+  from {
+    /* --- CHANGED --- */
+    /* This color is your accent color but with only 15% opacity, making it very subtle */
+    background-color: rgba(74, 111, 165, 0.15); 
+  }
+  to {
+    background-color: transparent; 
+  }
 }
