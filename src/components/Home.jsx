@@ -30,7 +30,7 @@ function Home({ lenis }) {
           className={styles.typewriter}
         />
         {/* Add a static subtitle below the typewriter */}
-        <p className={styles.subtitle}>Master's Student in Web and Data Science</p>
+        <p className={styles.subtitle}>Building ideas into reality.</p>
       </div>
 
       {/* Add the scroll-down button */}
