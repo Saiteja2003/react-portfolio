@@ -26,7 +26,7 @@ function Home({ lenis }) {
           ]}
           wrapper="h1"
           cursor={true}
-          repeat={Infinity}
+          repeat={0}
           className={styles.typewriter}
         />
         {/* Add a static subtitle below the typewriter */}

@@ -38,7 +38,7 @@ function Header({ lenis }) {
       <a 
         href="/" 
         className="home-link cursor-grow-target" 
-        onClick={(e) => handleNavClick(e, '#root')} // Target the main app container
+        //onClick={(e) => handleNavClick(e, '#root')} // Target the main app container
       >
         <h1>Saiteja Challa</h1>
       </a>

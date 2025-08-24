@@ -319,3 +319,21 @@ section[id], footer[id] {
     background-color: transparent; 
   }
 }
+
+.top-link {
+  background: none;
+  border: 2px solid var(--bg-color);
+  color: black;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-weight: 600;
+  font-family: var(--font-body);
+  margin: 1.5rem auto; /* Add some space around the button */
+  display: block; /* Make it a block to apply margin auto */
+  transition: all 0.3s ease;
+}
+
+.top-link:hover {
+  background-color: var(--bg-color);
+  color: var(--primary-color);
+}

@@ -41,7 +41,7 @@ function App() {
         <About />
         <Projects />
       </main>
-      <Footer />
+      <Footer lenis={lenis}  />
     </>
   );
 }
