@@ -1,49 +1,63 @@
 // src/components/About.jsx
 
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { Chart as ChartJS, RadialLinearScale, PointElement, LineElement, Filler, Tooltip } from 'chart.js';
-import { Radar } from 'react-chartjs-2';
 import Timeline from './Timeline';
+import ChartRatings from './ChartRatings';
 import styles from './About.module.css';
 
 gsap.registerPlugin(ScrollTrigger);
-ChartJS.register(RadialLinearScale, PointElement, LineElement, Filler, Tooltip);
-
-const skillsData = {
-  labels: ['React', 'CSS', 'JavaScript', 'Node.js', 'UI/UX Design', 'Git'],
-  datasets: [{ label: 'Proficiency', data: [9, 8, 8, 7, 9, 8], backgroundColor: 'rgba(74, 111, 165, 0.2)', borderColor: 'rgba(74, 111, 165, 1)', borderWidth: 2 }],
-};
-
-const chartOptions = {
-  scales: { r: { angleLines: { color: 'rgba(255, 255, 255, 0.25)' }, grid: { color: 'rgba(255, 255, 255, 0.25)' }, pointLabels: { font: { size: 14, family: "'Inter', sans-serif" }, color: '#f8f9fa' }, ticks: { backdropColor: '#212529', color: '#f8f9fa', stepSize: 2 }, suggestedMin: 0, suggestedMax: 10 }},
-  plugins: { tooltip: { enabled: true } },
-  maintainAspectRatio: false,
-};
 
 function About() {
   const containerRef = useRef(null);
   const panelsRef = useRef(null);
-  const timelineRef = useRef(null);
+  const timelineWrapperRef = useRef(null); // Changed name for clarity
+  const [timelineProgress, setTimelineProgress] = useState(0);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      if (!panelsRef.current) return;
-      const panels = gsap.utils.toArray(panelsRef.current.children);
-      const amount = panels.length - 1;
+      if (!timelineWrapperRef.current || !panelsRef.current) return;
 
-      gsap.to(panels, {
-        xPercent: -100 * amount,
-        ease: "none",
+      const panels = gsap.utils.toArray(panelsRef.current.children);
+      const wrapper = timelineWrapperRef.current;
+      
+      // Use scrollHeight to get the full height of the scrollable content
+      const scrollDistance = wrapper.scrollHeight - wrapper.clientHeight;
+
+      const tl = gsap.timeline({
         scrollTrigger: {
           trigger: containerRef.current,
           pin: true,
           scrub: 1,
-          snap: 1 / amount,
-          end: () => "+=" + panelsRef.current.offsetWidth,
+          end: "+=5000", // A generous, fixed scroll distance for a slow, premium feel
         },
       });
+
+      // --- THE DEFINITIVE FIX IS HERE ---
+
+      // Phase 1: A "dummy" animation for the virtual scroll
+      if (scrollDistance > 0) {
+        tl.to({}, { // Target an empty object, as we only need the onUpdate callback
+          duration: 2, // Dedicate 3/4 of the scroll to reading the timeline
+          onUpdate: function() {
+            // Get the progress of this specific animation (0 to 1)
+            const progress = this.progress();
+            // Manually set the scrollTop of the wrapper
+            wrapper.scrollTop = progress * scrollDistance;
+            // Update the state to animate the scroll beam in the Timeline component
+            setTimelineProgress(progress);
+          },
+        });
+      }
+      
+      // Phase 2: The horizontal slide (starts after the dummy tween is complete)
+      tl.to(panels, {
+        xPercent: -100 * (panels.length - 1),
+        ease: 'none',
+        duration: 1, // Dedicate 1/4 of the scroll to the slide
+      });
+
     }, containerRef);
     return () => ctx.revert();
   }, []);
@@ -51,23 +65,20 @@ function About() {
   return (
     <section id="about" ref={containerRef} className={styles.aboutContainer}>
       <div ref={panelsRef} className={styles.panelsContainer}>
-        {/* Panel 1: Timeline */}
-        <div className={`${styles.panel} ${styles.timelinePanel}`}>
-          <div className={styles.panelContent}>
+        {/* Panel 1: The Timeline */}
+        <div className={styles.panel}>
+          {/* This wrapper is now correctly being scrolled internally */}
+          <div ref={timelineWrapperRef} className={styles.timelineWrapper}>
             <h2 className={styles.panelHeading}>My Journey</h2>
-            <Timeline ref={timelineRef} />
+            <Timeline scrollProgress={timelineProgress} />
           </div>
         </div>
-        {/* Panel 2: Skills Chart */}
-        <div className={`${styles.panel} ${styles.chartPanel}`}>
-          <div className={styles.panelContent}>
-            <h2 className={styles.panelHeading}>My Skills</h2>
-            <div className={styles.chartWrapper}>
-              <Radar data={skillsData} options={chartOptions} />
-            </div>
+        {/* Panel 2: The Ratings Chart */}
+        <div className={styles.panel}>
+
+            <ChartRatings />
           </div>
         </div>
-      </div>
     </section>
   );
 }

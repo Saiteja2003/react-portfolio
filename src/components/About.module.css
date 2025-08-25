@@ -1,13 +1,15 @@
 /* src/components/About.module.css */
 
 .aboutContainer {
+  height: 100vh;
   overflow: hidden;
   position: relative;
+  background-color: #f8f9fa;
 }
 
 .panelsContainer {
   width: 200%;
-  height: 100vh;
+  height: 100%;
   display: flex;
   flex-wrap: nowrap;
 }
@@ -15,41 +17,54 @@
 .panel {
   width: 100vw;
   height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center; /* Vertically center by default */
-  padding: 2rem;
 }
 
-/* Override for the timeline panel to ensure top alignment */
-.timelinePanel {
-  align-items: flex-start;
-  padding-top: 6rem; /* Add space at the top */
+.timelineWrapper {
+  width: 80%;
+  height: 80%;
+  overflow-y: auto;
+  box-sizing: border-box;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
-
-.panelContent {
-  width: 100%;
-  max-width: 900px;
+.timelineWrapper::-webkit-scrollbar {
+  display: none;
 }
 
 .panelHeading {
+  /* --- STICKY HEADING STYLES --- */
+  position: sticky;
+  top: 0;
+  padding: 2rem 0;
+  margin: 0;
+  background-color: #f8f9fa; /* Match panel background */
+  z-index: 10;
+  /* --- END STICKY STYLES --- */
+  
   font-size: 2.5rem;
   color: var(--primary-color);
-  margin-bottom: 2rem;
   text-align: center;
   width: 100%;
 }
 
+.ratingsWrapper {
+  width: 100%;
+  max-width: 900px;
+  padding: 2rem;
+  box-sizing: border-box;
+}
+
+/* --- DARK THEME FOR CHART PANEL --- */
 .chartPanel {
-  background-color: #212529;
-}
+  background-color: #2c3034; /* The card background color */
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 15px 35px -10px rgba(0, 0, 0, 0.3);
+  
+  /* Use padding to create space around the centered content */
+  padding: 2rem;
+  box-sizing: border-box;
 
-.chartPanel .panelHeading {
-  color: #f8f9fa;
-}
-
-.chartWrapper {
-  position: relative;
-  height: 60vh;
-  max-height: 500px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
