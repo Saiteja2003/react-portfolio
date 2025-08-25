@@ -3,7 +3,7 @@
 .aboutSection {
   /* Use a lighter background for the full section if needed, or remove */
   background-color: var(--card-bg-color);
-  padding-top: 4rem;
+  padding-top: 1rem;
   padding-bottom: 4rem;
 }
 

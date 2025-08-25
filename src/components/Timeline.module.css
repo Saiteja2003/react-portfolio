@@ -133,3 +133,48 @@
 .title { font-size: 1.5rem; color: var(--primary-color); margin: 0; margin-bottom: 0.5rem; }
 .description { font-size: 1rem; line-height: 1.6; }
 
+/* Add this entire block to the BOTTOM of your file */
+
+/* --- Responsive Styles for Mobile & Tablets --- */
+/* In src/components/Timeline.module.css */
+
+/* Replace your entire existing @media block with this one */
+/* --- Responsive Styles for Mobile & Tablets --- */
+@media (max-width: 768px) {
+
+  /* FIX 2: Use a shorter scroll runway on mobile to remove extra white space */
+  .timelineContainer {
+    height: 240vh; /* Reduced from 500vh. Adjust as needed for your content length. */
+  }
+
+  .headerTextContainer h2 {
+    font-size: 2rem;
+  }
+  .headerTextContainer h3 {
+    font-size: 1.1rem;
+  }
+  .headerTextContainer {
+    padding: 2rem 1.5rem;
+  }
+
+  /* FIX 3: Increased top padding to ensure the first item is visible */
+  .timeline {
+    max-width: 100%;
+    padding-top: 350px; /* Increased from 190px. Adjust if needed. */
+  }
+
+  /* --- Stacking styles --- */
+  .timeline::before, .scrollBeam { left: 20px; }
+  .timelineDot { left: 20px; }
+  .timelineContent { width: auto; }
+  .timelineItem.left .timelineContent,
+  .timelineItem.right .timelineContent {
+    margin-left: 50px; text-align: left;
+  }
+  .timelineItem.left .timelineContent::before,
+  .timelineItem.right .timelineContent::before {
+    left: -10px; right: auto;
+    border-width: 10px 10px 10px 0;
+    border-color: transparent #e9ecef transparent transparent;
+  }
+}
