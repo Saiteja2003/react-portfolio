@@ -132,9 +132,6 @@
 .date { font-weight: 600; color: var(--secondary-color); margin-bottom: 0.5rem; display: block; }
 .title { font-size: 1.5rem; color: var(--primary-color); margin: 0; margin-bottom: 0.5rem; }
 .description { font-size: 1rem; line-height: 1.6; }
-
-/* Add this entire block to the BOTTOM of your file */
-
 /* --- Responsive Styles for Mobile & Tablets --- */
 /* In src/components/Timeline.module.css */
 

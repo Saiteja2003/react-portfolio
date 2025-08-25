@@ -71,7 +71,7 @@ const TimelineItem = ({ date, title, description, side, index, totalItems, anima
     hidden: { opacity: 0, x: side === 'left' ? -100 : 100 },
     visible: { opacity: 1, x: 0, transition: { duration: 0.6, ease: "easeOut" } }
   };
-
+  
   return (
     <div className={`${styles.timelineItem} ${side === 'left' ? styles.left : styles.right}`}>
       <motion.div 
@@ -92,7 +92,8 @@ const TimelineItem = ({ date, title, description, side, index, totalItems, anima
       </motion.div>
     </div>
   );
-};
+
+}
 
 function Timeline() {
   const scrollContainerRef = useRef(null);
@@ -123,8 +124,6 @@ function Timeline() {
       <div className={styles.stickyWrapper}>
         <div className={styles.headerContent}>
           <div className={styles.headerTextContainer}>
-            <h2>About Me</h2>
-            <h3>My Journey</h3>
           </div>
         </div>
         <div className={styles.timeline}>

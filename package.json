@@ -14,9 +14,11 @@
   },
   "dependencies": {
     "@studio-freight/lenis": "^1.0.42",
+    "chart.js": "^4.5.0",
     "framer-motion": "^12.23.12",
     "gsap": "^3.13.0",
     "react": "^19.1.1",
+    "react-chartjs-2": "^5.3.0",
     "react-dom": "^19.1.1",
     "react-type-animation": "^3.2.0"
   },

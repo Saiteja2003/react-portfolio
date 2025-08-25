@@ -1,28 +1,55 @@
 /* src/components/About.module.css */
 
-.aboutSection {
-  /* Use a lighter background for the full section if needed, or remove */
-  background-color: var(--card-bg-color);
-  padding-top: 1rem;
-  padding-bottom: 4rem;
+.aboutContainer {
+  overflow: hidden;
+  position: relative;
 }
 
-.aboutGrid {
-  display: grid;
-  grid-template-columns: 1fr; /* Single column on mobile */
-  gap: 2rem;
+.panelsContainer {
+  width: 200%;
+  height: 100vh;
+  display: flex;
+  flex-wrap: nowrap;
 }
 
-/* On larger screens, create the 80/20 split */
-@media (min-width: 992px) {
-  .aboutGrid {
-    /* This creates an 80/20 split. 4fr is 4 parts, 1fr is 1 part. */
-    grid-template-columns: 4fr 1fr;
-    gap: 4rem; /* Increase gap on larger screens */
-  }
+.panel {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center; /* Vertically center by default */
+  padding: 2rem;
 }
 
-.chartColumn {
-  /* This ensures the chart column content stays vertically aligned to the top */
-  align-self: start;
+/* Override for the timeline panel to ensure top alignment */
+.timelinePanel {
+  align-items: flex-start;
+  padding-top: 6rem; /* Add space at the top */
+}
+
+.panelContent {
+  width: 100%;
+  max-width: 900px;
+}
+
+.panelHeading {
+  font-size: 2.5rem;
+  color: var(--primary-color);
+  margin-bottom: 2rem;
+  text-align: center;
+  width: 100%;
+}
+
+.chartPanel {
+  background-color: #212529;
+}
+
+.chartPanel .panelHeading {
+  color: #f8f9fa;
+}
+
+.chartWrapper {
+  position: relative;
+  height: 60vh;
+  max-height: 500px;
 }
