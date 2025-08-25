@@ -1,17 +1,20 @@
 // src/components/About.jsx
 import React from 'react';
+import Timeline from './Timeline';
+import ChartRatings from './ChartRatings';
+import styles from './About.module.css';
 
 function About() {
   return (
-    // This section will now be full-width
-    <section id="about">
-      {/* This div will keep the content centered and readable */}
-      <div className="container cursor-grow-target">
-        <h2>About Me</h2>
-        <p>
-          Welcome to my portfolio! I am a passionate developer with expertise in
-          React, Node.js, and creating beautiful, functional web applications.
-        </p>
+    // We use the 'section' tag from our old file, but add a new class for the grid
+    <section id="about" className={styles.aboutSection}>
+      <div className={`${styles.aboutGrid} container`}>
+        <div className={styles.timelineColumn}>
+          <Timeline />
+        </div>
+        <div className={styles.chartColumn}>
+          <ChartRatings />
+        </div>
       </div>
     </section>
   );

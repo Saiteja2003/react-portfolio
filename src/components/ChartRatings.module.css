@@ -1,0 +1,39 @@
+/* src/components/ChartRatings.module.css */
+
+.stickyContainer {
+  @media (min-width: 992px) {
+    position: sticky;
+    /* We adjust 'top' to account for the sticky header height + some margin */
+    top: 120px; 
+  }
+}
+
+.chartContainer {
+  background-color: var(--bg-color);
+  padding: 1.5rem;
+  border-radius: 12px;
+  border: 1px solid #e9ecef;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+  /* Add a minimum height to give it substance */
+  min-height: 300px;
+  /* Use flexbox to vertically center the placeholder content */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.chartContainer h4 {
+  margin: 0 0 1rem 0;
+  color: var(--primary-color);
+  font-size: 1.25rem;
+  text-align: center;
+}
+
+.chartPreview {
+  padding: 2rem 1rem;
+  text-align: center;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  border: 2px dashed #dee2e6;
+  color: #6c757d;
+}

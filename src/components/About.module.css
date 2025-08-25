@@ -1,0 +1,28 @@
+/* src/components/About.module.css */
+
+.aboutSection {
+  /* Use a lighter background for the full section if needed, or remove */
+  background-color: var(--card-bg-color);
+  padding-top: 1rem;
+  padding-bottom: 4rem;
+}
+
+.aboutGrid {
+  display: grid;
+  grid-template-columns: 1fr; /* Single column on mobile */
+  gap: 2rem;
+}
+
+/* On larger screens, create the 80/20 split */
+@media (min-width: 992px) {
+  .aboutGrid {
+    /* This creates an 80/20 split. 4fr is 4 parts, 1fr is 1 part. */
+    grid-template-columns: 4fr 1fr;
+    gap: 4rem; /* Increase gap on larger screens */
+  }
+}
+
+.chartColumn {
+  /* This ensures the chart column content stays vertically aligned to the top */
+  align-self: start;
+}
