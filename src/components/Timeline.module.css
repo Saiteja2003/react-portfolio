@@ -142,9 +142,17 @@
 /* --- Responsive Styles for Mobile & Tablets --- */
 @media (max-width: 768px) {
 
-  /* FIX 2: Use a shorter scroll runway on mobile to remove extra white space */
+  /* FIX: Use 'dvh' instead of 'vh' for reliable mobile height.
+     This value controls the scroll speed. Adjust it to your liking.
+     A good starting point is 40-50dvh per event. For 6 events, ~250dvh is a good start.
+  */
   .timelineContainer {
-    height: 240vh; /* Reduced from 500vh. Adjust as needed for your content length. */
+    height: 250dvh; 
+  }
+
+  /* FIX: The sticky container must also use 'dvh' to match. */
+  .stickyWrapper {
+    height: 100dvh;
   }
 
   .headerTextContainer h2 {
@@ -157,10 +165,9 @@
     padding: 2rem 1.5rem;
   }
 
-  /* FIX 3: Increased top padding to ensure the first item is visible */
   .timeline {
     max-width: 100%;
-    padding-top: 350px; /* Increased from 190px. Adjust if needed. */
+    padding-top: 300px;
   }
 
   /* --- Stacking styles --- */
