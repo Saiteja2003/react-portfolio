@@ -1,24 +1,45 @@
 /* src/styles.css */
 
 /* --- 1. NEW Font Import & CSS Variables (Elegant Design System) --- */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Lora:wght@400;600&display=swap');
+/* src/styles.css */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@400;600&display=swap');
 
 :root {
-  /* Color Palette */
-  --bg-color: #f8f9fa;            /* Light warm gray */
-  --card-bg-color: #ffffff;       /* Pure White */
-  --primary-color: #212529;      /* Dark Charcoal for headings/text */
-  --text-color: #495057;          /* Softer gray for body text */
-  --accent-color: #4a6fa5;         /* Muted, dusty blue for links/highlights */
-  --border-color: #dee2e6;        /* Subtle border color */
-  --shadow-color: rgba(33, 37, 41, 0.07);
+  /* Color Palette - Light Mode (Default) */
+  --bg-color: #f4f5f7;            /* A softer, slightly off-white */
+  --card-bg-color: #ffffff;
+  --primary-color: #1a1a1a;        /* A deep, near-black for strong contrast */
+  --text-color: #555555;          /* A softer gray for body text */
+  --accent-color: #3d5a80;         /* A sophisticated, muted blue */
+  --accent-gradient: linear-gradient(45deg, #3d5a80, #98c1d9); /* For highlights */
+  --border-color: #e0e0e0;
+  --shadow-color: rgba(26, 26, 26, 0.05);
+  --glass-bg: rgba(255, 255, 255, 0.6); /* For glassmorphism effect */
+  --backdrop-blur: 10px;
 
   /* Typography */
-  --font-heading: 'Lora', serif;
+  --font-heading: 'Playfair Display', serif; /* An elegant, high-contrast serif */
   --font-body: 'Inter', sans-serif;
 
-  /* Spacing */
-  --container-width: 1100px;
+  /* Spacing & Radii */
+  --container-width: 1140px;
+  --border-radius: 12px; /* Consistent border radius */
+  
+  /* Transitions */
+  --transition-smooth: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+/* --- DARK MODE THEME --- */
+[data-theme='dark'] {
+  --bg-color: #121212;
+  --card-bg-color: #1e1e1e;
+  --primary-color: #f0f0f0;
+  --text-color: #a0a0a0;
+  --accent-color: #6fa8dc;
+  --accent-gradient: linear-gradient(45deg, #6fa8dc, #3d5a80);
+  --border-color: #333333;
+  --shadow-color: rgba(0, 0, 0, 0.2);
+  --glass-bg: rgba(30, 30, 30, 0.75);
 }
 #root {
   width: 100%;
@@ -35,76 +56,80 @@
 
 html {
   scroll-behavior: smooth;
-}
-
-html {
-  /* For Firefox */
   scrollbar-width: none;
-  /* For Internet Explorer and Edge */
   -ms-overflow-style: none;
 }
-
-/* For Chrome, Safari, and Opera */
 html::-webkit-scrollbar {
   display: none;
 }
 
 body {
-  font-family: var(--font-body); /* Use the new body font */
+  font-family: var(--font-body);
   background-color: var(--bg-color);
   color: var(--text-color);
-  line-height: 1.7;
-  margin: 0;
+  line-height: 1.8;
+  transition: background-color 0.3s ease, color 0.3s ease; /* For theme switching */
 }
 
 main {
- padding-top: 2rem
+  padding-top: 4rem; /* More space below the sticky header */
 }
 
 section {
-  padding: 3rem 1.5rem;
-  margin-bottom: 2rem;
-  background-color: var(--card-bg-color);
-  border-radius: 12px;
-  box-shadow: 0 8px 16px var(--shadow-color);
+  padding: 6rem 1.5rem; /* Increased vertical padding for more breathing room */
+  margin: 0 auto 4rem;
+  max-width: var(--container-width);
+  background-color: transparent; /* Remove section background for a cleaner look */
+  border-radius: 0; /* Remove radius from sections themselves */
+  box-shadow: none; /* Remove shadow from sections */
 }
 
 h1, h2, h3 {
-  font-family: var(--font-heading); /* Use the new heading font */
+  font-family: var(--font-heading);
   color: var(--primary-color);
   font-weight: 600;
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
+  line-height: 1.3;
 }
 
 h2 {
-    font-size: 2.5rem;
-    border-bottom: 3px solid var(--accent-color); /* Use the new accent color */
-    display: inline-block;
-    padding-bottom: 0.5rem;
+  font-size: clamp(2rem, 5vw, 3rem); /* Fluid typography */
+  text-align: center; /* Center section titles for a formal look */
+  border-bottom: none; /* Remove the underline */
+  padding-bottom: 0;
+  position: relative;
+  margin-bottom: 3rem;
+}
+
+/* Add a subtle decorative element to section titles */
+h2::after {
+  content: '';
+  position: absolute;
+  bottom: -1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50px;
+  height: 3px;
+  background: var(--accent-gradient);
+  border-radius: 2px;
 }
 
 a {
   color: var(--accent-color);
   text-decoration: none;
-  font-weight: 600;
-  transition: color 0.3s ease;
-}  
+  font-weight: 500;
+  transition: var(--transition-smooth);
+}
 
 a:hover {
-  color: var(--accent-color);
+  opacity: 0.8;
 }
-body, a, button {
-  cursor: none;
-}
-
-/* src/styles.css */
 
 .container {
-  max-width: var(--container-width); /* Our 1100px readable width */
-  margin: 0 auto; /* This centers the container */
-  padding: 0 1.5rem; /* This adds space on the sides */
+  max-width: var(--container-width);
+  margin: 0 auto;
+  padding: 0 1.5rem;
 }
-
 .custom-cursor {
   width: 30px;
   height: 30px;
