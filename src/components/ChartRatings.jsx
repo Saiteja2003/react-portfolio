@@ -13,7 +13,7 @@ const skillsData = {
   labels: ['React', 'CSS', 'JavaScript', 'Node.js', 'UI/UX Design', 'Git'],
   datasets: [{
     label: 'Proficiency',
-    data: [9, 8, 8, 7, 9, 8],
+    data: [9, 8, 8, 8, 9, 9],
     backgroundColor: 'rgba(74, 111, 165, 0.2)',
     borderColor: 'rgba(74, 111, 165, 1)',
     borderWidth: 2,
