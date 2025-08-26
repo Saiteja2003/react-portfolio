@@ -23,7 +23,7 @@
 }
 
 /* This style applies ONLY to the chart panel to center it. */
-.chartPanel {
+section#about .chartPanel {
   display: flex;
   justify-content: center;
   align-items: center;

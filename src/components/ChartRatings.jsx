@@ -15,6 +15,7 @@ function ChartRatings() {
     const updateChartStyles = () => {
       const getCssVar = (varName) => getComputedStyle(document.documentElement).getPropertyValue(varName).trim();
       
+      
       const primaryColor = getCssVar('--primary-color');
       const textColor = getCssVar('--text-color');
       const accentColor = getCssVar('--accent-color'); // ✅ Bug Fix: Was using --primary-color
@@ -48,7 +49,10 @@ function ChartRatings() {
         maintainAspectRatio: false,
       });
     };
-
+     
+     const timer = setTimeout(() => {
+      updateChartStyles();
+    }, 100);
     // Update styles on initial mount
     updateChartStyles();
 
@@ -60,7 +64,10 @@ function ChartRatings() {
     });
     observer.observe(document.body, { attributes: true });
 
-    return () => observer.disconnect();
+    return () => {
+      clearTimeout(timer); // Clear the timer
+      observer.disconnect();
+    };
   }, []);
 
   if (!chartOptions.scales) return <div>Loading Chart...</div>;
