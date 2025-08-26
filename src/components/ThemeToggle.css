@@ -1,0 +1,18 @@
+/* src/components/ThemeToggle.module.css */
+.toggleButton {
+  background: none;
+  border: 1px solid var(--border-color);
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: none;
+  transition: all 0.3s ease;
+  color: var(--primary-color); /* The icon color will be inherited from this */
+}
+
+.toggleButton:hover {
+  transform: scale(1.1) rotate(15deg);
+}

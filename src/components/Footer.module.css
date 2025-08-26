@@ -1,0 +1,87 @@
+/* src/components/Footer.module.css */
+.footer {
+  background-color: var(--card-bg-color);
+  padding: 4rem 0 2rem;
+  border-top: 1px solid var(--border-color);
+  color: var(--text-color);
+}
+
+.footerContent {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 2rem;
+  padding-bottom: 3rem;
+  margin-bottom: 2rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.contactInfo h3 {
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+}
+
+.emailLink {
+  /* --- Core Styles --- */
+  display: inline-block; /* Allows us to apply padding and border */
+  margin-top: 1rem;
+  font-size: 1.1rem;
+  font-weight: 500;
+  transition: var(--transition-smooth); /* For a smooth hover effect */
+  cursor: none; /* Keep the custom cursor */
+
+  /* --- New Shape & Border Styles --- */
+  padding: 0.75rem 1.5rem; /* Adds space inside the button */
+  border: 2px solid var(--accent-color); /* The border you wanted */
+  border-radius: 99px; /* This creates the oval/pill shape */
+  color: var(--accent-color); /* Text color matches the border */
+  background-color: rgb(255, 255, 255); /* Makes it a "ghost button" */
+}
+
+/* --- Add a hover effect to make it interactive --- */
+.emailLink:hover {
+  background-color: var(--accent-color); /* Fills the button with the accent color */
+  color: var(--card-bg-color); /* Changes text to light color on hover */
+  transform: translateY(-2px); /* Slight lift effect */
+}
+
+.footerNav {
+  text-align: right;
+}
+
+.socials {
+  display: flex;
+  gap: 1.5rem;
+  justify-content: flex-end;
+  margin-bottom: 1.5rem;
+}
+
+.socials a {
+  color: var(--text-color);
+}
+.socials a:hover {
+  color: var(--accent-color);
+  transform: scale(1.2);
+}
+
+.topLink {
+  background: none;
+  border: 1px solid var(--border-color);
+  color: var(--accent-color);
+  padding: 0.6rem 1.2rem;
+  border-radius: 99px;
+  font-weight: 500;
+  transition: var(--transition-smooth);
+}
+
+.topLink:hover {
+  background-color: var(--accent-color);
+  border-color: var(--accent-color);
+  color: #fff;
+}
+
+.footerBottom {
+  text-align: center;
+  font-size: 0.9rem;
+}
