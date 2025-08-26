@@ -33,12 +33,16 @@ function Header({ lenis }) {
       targetElement.classList.remove('section-flash');
     }, animationDuration);
   };
-
+  const handleReload = (event) => {
+    // 1. Prevent the link from trying to navigate away
+    event.preventDefault();
+    // 2. Force the browser to reload the current page
+    window.location.reload();
+  };
   return (
     <header className="main-header">
       <a 
-        href="/" 
-        className="home-link cursor-grow-target" 
+         href="#" className="home-link cursor-grow-target" onClick={handleReload}
         //onClick={(e) => handleNavClick(e, '#root')} // Target the main app container
       >
         <h1>Saiteja Challa</h1>
