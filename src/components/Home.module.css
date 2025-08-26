@@ -23,7 +23,7 @@
   height: 40px;
   border: 2px solid var(--primary-color);
   border-radius: 20px;
-  cursor: pointer;
+  cursor: none;
 }
 
 /* The moving dot inside the button */

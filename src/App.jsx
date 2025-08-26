@@ -5,7 +5,7 @@ import { useLenis } from './hooks/useLenis'; // 2. Import Lenis
 
 import Header from './components/header';
 import About from './components/about';
-import Projects from './components/projects';
+import Projects from './components/Projects';
 import Footer from './components/footer';
 import CustomCursor from './components/CustomCursor';
 import Home from './components/Home';

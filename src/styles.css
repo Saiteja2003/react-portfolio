@@ -31,15 +31,19 @@
 
 /* --- DARK MODE THEME --- */
 [data-theme='dark'] {
-  --bg-color: #121212;
-  --card-bg-color: #1e1e1e;
-  --primary-color: #f0f0f0;
-  --text-color: #a0a0a0;
-  --accent-color: #6fa8dc;
-  --accent-gradient: linear-gradient(45deg, #6fa8dc, #3d5a80);
-  --border-color: #333333;
-  --shadow-color: rgba(0, 0, 0, 0.2);
-  --glass-bg: rgba(30, 30, 30, 0.75);
+  --bg-color: #1a1d23;                  /* A softer, dark charcoal instead of pure black */
+  --card-bg-color: #23272f;             /* A slightly lighter gray to make cards stand out */
+  --primary-color: #e2e8f0;             /* Off-white text to reduce eye strain */
+  --text-color: #94a3b8;               /* Softer gray for secondary text */
+  --accent-color: #81a1c1;              /* A slightly desaturated blue that's easier on the eyes */
+  --accent-gradient: linear-gradient(45deg, #81a1c1, #5e81ac);
+  --border-color: #3e4451;              /* A more visible but still subtle border */
+  
+  /* --- The Trick to Dark Mode Shadows --- */
+  /* Dark shadows are invisible on dark backgrounds. We use a faint, light shadow to create a "glow" effect. */
+  --shadow-color: rgba(226, 232, 240, 0.05); 
+
+  --glass-bg: rgba(35, 39, 47, 0.7);    /* A darker, translucent background for the glass effect */
 }
 #root {
   width: 100%;
@@ -151,28 +155,57 @@ a:hover {
 /* Header & Navigation */
 /* src/styles.css */
 
-header {
-  background-color: var(--card-bg-color);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+.main-header {
   position: sticky;
   top: 0;
   z-index: 100;
   width: 100%;
+  padding: 1rem 3rem;
   display: flex;
-  flex-direction: row; /* Ensures side-by-side layout */
   justify-content: space-between;
   align-items: center;
-  padding: 0.75rem 3rem; /* Desktop padding */
+  background-color: var(--glass-bg);
+  backdrop-filter: blur(var(--backdrop-blur));
+  -webkit-backdrop-filter: blur(var(--backdrop-blur));
+  border-bottom: 1px solid var(--border-color);
+  transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
-header h1 {
-    font-size: 1.5rem; 
-    margin-bottom: 0;
-}
-
-header nav a {
-  margin: 0 10px;
+.main-header h1 {
+  font-size: 1.5rem;
+  margin-bottom: 0;
   color: var(--primary-color);
+}
+
+.main-header nav {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem; /* Use gap for spacing */
+}
+
+.main-header nav a {
+  color: var(--primary-color);
+  font-weight: 500;
+  position: relative;
+}
+
+/* Subtle animated underline on hover */
+.main-header nav a::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: var(--accent-gradient);
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.main-header nav a:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
 }
 .home-link {
   text-decoration: none;
@@ -361,4 +394,10 @@ section[id], footer[id] {
 .top-link:hover {
   background-color: var(--bg-color);
   color: var(--primary-color);
+}
+
+svg {
+  display: inline-block !important;
+  width: inherit !important;
+  height: inherit !important;
 }

@@ -36,7 +36,7 @@ function Home({ lenis }) {
       {/* Add the scroll-down button */}
       <a 
         href="#about" 
-        className={styles.scrollButton} 
+        className={`${styles.scrollButton}  cursor-grow-target`}
         onClick={handleScrollClick}
       >
         <span></span>

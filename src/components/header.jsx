@@ -1,6 +1,7 @@
 // src/components/Header.jsx
 
 import React from 'react';
+import ThemeToggle from './ThemeToggle';
 
 function Header({ lenis }) {
   const handleNavClick = (event, targetSelector) => {
@@ -34,7 +35,7 @@ function Header({ lenis }) {
   };
 
   return (
-    <header>
+    <header className="main-header">
       <a 
         href="/" 
         className="home-link cursor-grow-target" 
@@ -64,6 +65,7 @@ function Header({ lenis }) {
         >
           Contact
         </a>
+        <ThemeToggle />
       </nav>
     </header>
   );

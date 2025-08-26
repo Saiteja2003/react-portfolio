@@ -1,38 +1,54 @@
 /* src/components/ChartRatings.module.css */
-
 .chartContainer {
-  width: 90%;
-  
-  /* --- PREMIUM CARD STYLES --- */
-  /* A slightly lighter dark color creates a layered effect */
-  background-color: #2c3034; 
-  
-  /* A subtle border for a clean edge */
-  border: 1px solid rgba(255, 255, 255, 0.1);
-
-  /* A soft shadow to lift the card off the background */
-  box-shadow: 0 15px 35px -10px rgba(0, 0, 0, 0.3);
-  
-  border-radius: 16px;
-  padding: 2rem;
-  box-sizing: border-box;
-}
-.stickyContainer {
-  position: sticky;
-  top: 0;
+  width: 100%;
+  max-width: 900px; /* Increased max-width for better spacing */
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  padding: 2rem 0;
-  background-color: #fdfdfd; /* Match the chart container background */
-  z-index: 10;
-  width: 90%;
+  text-align: center;
+  padding: 1rem 0; /* Add vertical padding for breathing room */
+}
+
+.mainHeading {
+  color: var(--primary-color);
+  margin-bottom: 0.5rem;
+}
+
+/* Adds the decorative underline consistent with other sections */
+.mainHeading::after {
+  content: '';
+  display: block;
+  width: 80px;
+  height: 3px;
+  background: var(--accent-gradient);
+  margin: 1rem auto 0;
+  border-radius: 2px;
+}
+
+.subtitle {
+  margin-top: 1rem;
+  margin-bottom: 2rem; /* More space before the chart */
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: var(--text-color);
 }
 
 .chartWrapper {
   position: relative;
-  height: 55vh; /* Adjusted for better spacing */
-  max-height: 450px;
-  margin-top:1.5rem;
+  width: 100%;
+  max-width: 550px; /* Optimal width for a radar chart */
+  aspect-ratio: 1 / 1; /* Ensures it's a perfect square */
+  max-height: 550px;
+  
+  /* --- Premium Glassmorphism --- */
+  background: var(--glass-bg); /* Use theme's glass color */
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--border-color);
+  box-shadow: 0 10px 30px -5px var(--shadow-color); /* Theme-aware shadow */
+  border-radius: var(--border-radius);
+  
+  padding: 2rem;
+  box-sizing: border-box;
+  transition: all 0.3s ease;
 }
