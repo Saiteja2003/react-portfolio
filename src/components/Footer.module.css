@@ -41,7 +41,9 @@
 
 /* --- Add a hover effect to make it interactive --- */
 .emailLink:hover {
-  background-color: var(--accent-color); /* Fills the button with the accent color */
+  background-color: var(
+    --accent-color
+  ); /* Fills the button with the accent color */
   color: var(--card-bg-color); /* Changes text to light color on hover */
   transform: translateY(-2px); /* Slight lift effect */
 }

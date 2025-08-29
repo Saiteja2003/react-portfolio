@@ -1,7 +1,7 @@
 // src/components/Header.jsx
 
-import React from 'react';
-import ThemeToggle from './ThemeToggle';
+import React from "react";
+import ThemeToggle from "./ThemeToggle";
 
 function Header({ lenis }) {
   const handleNavClick = (event, targetSelector) => {
@@ -14,7 +14,7 @@ function Header({ lenis }) {
     if (window.innerWidth < 768) {
       // --- MOBILE LOGIC ---
       // Use the browser's native, high-performance smooth scroll
-      targetElement.scrollIntoView({ behavior: 'smooth' });
+      targetElement.scrollIntoView({ behavior: "smooth" });
     } else {
       // --- DESKTOP LOGIC ---
       // Use Lenis for the custom, longer animation
@@ -27,10 +27,10 @@ function Header({ lenis }) {
     }
 
     // The "flash" highlight works for both
-    targetElement.classList.add('section-flash');
+    targetElement.classList.add("section-flash");
     const animationDuration = window.innerWidth < 768 ? 800 : 2000; // Match duration
     setTimeout(() => {
-      targetElement.classList.remove('section-flash');
+      targetElement.classList.remove("section-flash");
     }, animationDuration);
   };
   const handleReload = (event) => {
@@ -41,31 +41,33 @@ function Header({ lenis }) {
   };
   return (
     <header className="main-header">
-      <a 
-         href="#" className="home-link cursor-grow-target" onClick={handleReload}
+      <a
+        href="#"
+        className="home-link cursor-grow-target"
+        onClick={handleReload}
         //onClick={(e) => handleNavClick(e, '#root')} // Target the main app container
       >
         <h1>Saiteja Challa</h1>
       </a>
       <nav>
-        <a 
-          href="#about" 
-          className="cursor-grow-target" 
-          onClick={(e) => handleNavClick(e, '#about')}
+        <a
+          href="#about"
+          className="cursor-grow-target"
+          onClick={(e) => handleNavClick(e, "#about")}
         >
           About
         </a>
-        <a 
-          href="#projects" 
-          className="cursor-grow-target" 
-          onClick={(e) => handleNavClick(e, '#projects')}
+        <a
+          href="#projects"
+          className="cursor-grow-target"
+          onClick={(e) => handleNavClick(e, "#projects")}
         >
           Projects
         </a>
-        <a 
-          href="#contact" 
-          className="cursor-grow-target" 
-          onClick={(e) => handleNavClick(e, '#contact')}
+        <a
+          href="#contact"
+          className="cursor-grow-target"
+          onClick={(e) => handleNavClick(e, "#contact")}
         >
           Contact
         </a>

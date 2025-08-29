@@ -1,10 +1,10 @@
 // src/components/About.jsx
-import React, { useEffect, useRef, useState } from 'react';
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import Timeline from './Timeline';
-import ChartRatings from './ChartRatings';
-import styles from './About.module.css';
+import React, { useEffect, useRef, useState } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import Timeline from "./Timeline";
+import ChartRatings from "./ChartRatings";
+import styles from "./About.module.css";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -35,20 +35,19 @@ function About() {
         tl.to(wrapper, {
           scrollTop: scrollDistance,
           duration: 2,
-          ease: 'none',
-          onUpdate: function() {
+          ease: "none",
+          onUpdate: function () {
             const progress = this.progress();
             setTimelineProgress(progress);
           },
         });
       }
-      
+
       tl.to(panels, {
         xPercent: -100 * (panels.length - 1),
-        ease: 'none',
+        ease: "none",
         duration: 1,
       });
-
     }, containerRef);
     return () => ctx.revert();
   }, []);

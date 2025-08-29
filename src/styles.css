@@ -2,54 +2,61 @@
 
 /* --- 1. NEW Font Import & CSS Variables (Elegant Design System) --- */
 /* src/styles.css */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@400;600&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@400;600&display=swap");
 
 :root {
   /* Color Palette - Light Mode (Default) */
-  --bg-color: #f4f5f7;            /* A softer, slightly off-white */
+  --bg-color: #f4f5f7; /* A softer, slightly off-white */
   --card-bg-color: #ffffff;
-  --primary-color: #1a1a1a;        /* A deep, near-black for strong contrast */
-  --text-color: #555555;          /* A softer gray for body text */
-  --accent-color: #3d5a80;         /* A sophisticated, muted blue */
-  --accent-gradient: linear-gradient(45deg, #3d5a80, #98c1d9); /* For highlights */
+  --primary-color: #1a1a1a; /* A deep, near-black for strong contrast */
+  --text-color: #555555; /* A softer gray for body text */
+  --accent-color: #3d5a80; /* A sophisticated, muted blue */
+  --accent-gradient: linear-gradient(
+    45deg,
+    #3d5a80,
+    #98c1d9
+  ); /* For highlights */
   --border-color: #e0e0e0;
   --shadow-color: rgba(26, 26, 26, 0.05);
   --glass-bg: rgba(255, 255, 255, 0.6); /* For glassmorphism effect */
   --backdrop-blur: 10px;
 
   /* Typography */
-  --font-heading: 'Playfair Display', serif; /* An elegant, high-contrast serif */
-  --font-body: 'Inter', sans-serif;
+  --font-heading: "Playfair Display", serif; /* An elegant, high-contrast serif */
+  --font-body: "Inter", sans-serif;
 
   /* Spacing & Radii */
   --container-width: 1140px;
   --border-radius: 12px; /* Consistent border radius */
-  
+
   /* Transitions */
   --transition-smooth: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
 /* --- DARK MODE THEME --- */
-[data-theme='dark'] {
-  --bg-color: #1a1d23;                  /* A softer, dark charcoal instead of pure black */
-  --card-bg-color: #23272f;             /* A slightly lighter gray to make cards stand out */
-  --primary-color: #e2e8f0;             /* Off-white text to reduce eye strain */
-  --text-color: #94a3b8;               /* Softer gray for secondary text */
-  --accent-color: #81a1c1;              /* A slightly desaturated blue that's easier on the eyes */
+[data-theme="dark"] {
+  --bg-color: #1a1d23; /* A softer, dark charcoal instead of pure black */
+  --card-bg-color: #23272f; /* A slightly lighter gray to make cards stand out */
+  --primary-color: #e2e8f0; /* Off-white text to reduce eye strain */
+  --text-color: #94a3b8; /* Softer gray for secondary text */
+  --accent-color: #81a1c1; /* A slightly desaturated blue that's easier on the eyes */
   --accent-gradient: linear-gradient(45deg, #81a1c1, #5e81ac);
-  --border-color: #3e4451;              /* A more visible but still subtle border */
-  
+  --border-color: #3e4451; /* A more visible but still subtle border */
+
   /* --- The Trick to Dark Mode Shadows --- */
   /* Dark shadows are invisible on dark backgrounds. We use a faint, light shadow to create a "glow" effect. */
-  --shadow-color: rgba(226, 232, 240, 0.05); 
+  --shadow-color: rgba(226, 232, 240, 0.05);
 
-  --glass-bg: rgba(35, 39, 47, 0.7);    /* A darker, translucent background for the glass effect */
+  --glass-bg: rgba(
+    35,
+    39,
+    47,
+    0.7
+  ); /* A darker, translucent background for the glass effect */
 }
 #root {
   width: 100%;
 }
-
-
 
 /* --- 2. Global & Reset Styles --- */
 * {
@@ -88,7 +95,9 @@ section {
   box-shadow: none; /* Remove shadow from sections */
 }
 
-h1, h2, h3 {
+h1,
+h2,
+h3 {
   font-family: var(--font-heading);
   color: var(--primary-color);
   font-weight: 600;
@@ -107,7 +116,7 @@ h2 {
 
 /* Add a subtle decorative element to section titles */
 h2::after {
-  content: '';
+  content: "";
   position: absolute;
   bottom: -1rem;
   left: 50%;
@@ -137,18 +146,16 @@ a:hover {
 .custom-cursor {
   width: 30px;
   height: 30px;
-  background-color: white; 
+  background-color: white;
   border-radius: 50%;
   position: fixed;
-  top: -15px; 
+  top: -15px;
   left: -15px;
   pointer-events: none;
   transition: transform 0.2s ease-out;
   mix-blend-mode: difference;
   z-index: 9999;
 }
-
-
 
 /* --- 3. Component Styles (Mobile-First) --- */
 
@@ -191,7 +198,7 @@ a:hover {
 
 /* Subtle animated underline on hover */
 .main-header nav a::after {
-  content: '';
+  content: "";
   position: absolute;
   bottom: -4px;
   left: 0;
@@ -212,7 +219,6 @@ a:hover {
 }
 /* Projects Section */
 
-
 .project-card {
   border: 1px solid #eee;
   padding: 1.5rem;
@@ -222,13 +228,13 @@ a:hover {
 }
 
 .project-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 6px 12px var(--shadow-color);
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px var(--shadow-color);
 }
 
 .project-card h3 {
-    margin-top: 0;
-    color: var(--secondary-color);
+  margin-top: 0;
+  color: var(--secondary-color);
 }
 
 /* Footer */
@@ -236,24 +242,24 @@ footer {
   text-align: center;
   padding: 2rem;
   background-color: white;
-  color:black;
+  color: black;
 }
 
 footer p {
-    margin: 0;
+  margin: 0;
 }
 
 footer a {
-    text-wrap: wrap;
-    color: var(--accent-color);
-    font-weight: bold;
+  text-wrap: wrap;
+  color: var(--accent-color);
+  font-weight: bold;
 }
 footer .email-link {
   background-color: black;
   color: white;
   padding: 0.5rem 1rem;
   border-radius: 5px;
-  border-radius: 20px; 
+  border-radius: 20px;
   text-decoration: none;
   transition: background-color 0.3s ease;
 }
@@ -266,7 +272,7 @@ footer .email-link:hover {
 
 section[id] {
   /* This value should be slightly more than your header's height */
-  scroll-margin-top: 100px; 
+  scroll-margin-top: 100px;
 }
 
 /* --- 4. Media Queries for Responsiveness --- */
@@ -277,10 +283,10 @@ section[id] {
 .custom-cursor {
   width: 30px;
   height: 30px;
-  background-color: white; 
+  background-color: white;
   border-radius: 50%;
   position: fixed;
-  top: -15px; 
+  top: -15px;
   left: -15px;
   pointer-events: none;
   transition: transform 0.2s ease-out;
@@ -288,7 +294,9 @@ section[id] {
   z-index: 9999;
 }
 
-body, a, button {
+body,
+a,
+button {
   /* This hides the default cursor on devices that can hover (desktops) */
   cursor: none;
 }
@@ -302,7 +310,7 @@ header {
   z-index: 100;
   width: 100%;
   display: flex;
-  
+
   /* Mobile-first styles: stacked layout */
   flex-direction: column;
   padding: 1rem 1.5rem;
@@ -321,8 +329,10 @@ header h1 {
   .custom-cursor {
     display: none;
   }
-  
-  body, a, button {
+
+  body,
+  a,
+  button {
     /* Show the default cursor on touch devices */
     cursor: default;
   }
@@ -339,29 +349,30 @@ header h1 {
   }
 }
 @media (min-width: 1024px) {
-    #projects .projects-grid {
-        grid-template-columns: repeat(3, 1fr); /* Three columns on desktops */
-    }
+  #projects .projects-grid {
+    grid-template-columns: repeat(3, 1fr); /* Three columns on desktops */
+  }
 }
 
 /* Keyframe animation for the subtle flash */
 /* 1. Prepare sections to contain the background layer */
-section[id], footer[id] {
+section[id],
+footer[id] {
   position: relative;
   /* This creates a new stacking context, which is key for the z-index */
-  isolation: isolate; 
+  isolation: isolate;
 }
 
 /* 2. Style the background layer using a pseudo-element */
 .section-flash::before {
-  content: '';
+  content: "";
   position: absolute;
   /* A modern shorthand for top: 0; right: 0; bottom: 0; left: 0; */
   inset: 0;
   /* Places the flash behind the content within this section */
-  z-index: -1; 
+  z-index: -1;
   animation: section-highlight 1s ease-out forwards;
-  
+
   /* Run the animation on this layer */
   animation: section-highlight 1.5s ease-out forwards;
 }
@@ -371,10 +382,10 @@ section[id], footer[id] {
   from {
     /* --- CHANGED --- */
     /* This color is your accent color but with only 15% opacity, making it very subtle */
-    background-color: rgba(74, 111, 165, 0.15); 
+    background-color: rgba(74, 111, 165, 0.15);
   }
   to {
-    background-color: transparent; 
+    background-color: transparent;
   }
 }
 

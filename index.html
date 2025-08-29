@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -6,16 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Saiteja Challa - Portfolio</title>
     <script>
-      (function() {
-        const theme = localStorage.getItem('theme');
-        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-        
-        if (theme === 'dark' || (!theme && prefersDark)) {
-          document.documentElement.setAttribute('data-theme', 'dark');
+      (function () {
+        const theme = localStorage.getItem("theme");
+        const prefersDark = window.matchMedia(
+          "(prefers-color-scheme: dark)"
+        ).matches;
+
+        if (theme === "dark" || (!theme && prefersDark)) {
+          document.documentElement.setAttribute("data-theme", "dark");
+        } else {
+          document.documentElement.classList.add("light-mode-flash");
         }
-        else {
-      document.documentElement.classList.add('light-mode-flash');
-    }
       })();
     </script>
   </head>

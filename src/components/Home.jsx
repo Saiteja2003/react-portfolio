@@ -1,14 +1,14 @@
 // src/components/Home.jsx
 
-import React from 'react';
-import { TypeAnimation } from 'react-type-animation';
-import styles from './Home.module.css';
+import React from "react";
+import { TypeAnimation } from "react-type-animation";
+import styles from "./Home.module.css";
 
 // Receive the 'lenis' prop
 function Home({ lenis }) {
   const handleScrollClick = () => {
     if (lenis) {
-      lenis.scrollTo('#about'); // Tell Lenis to scroll to the About section
+      lenis.scrollTo("#about"); // Tell Lenis to scroll to the About section
     }
   };
 
@@ -17,7 +17,7 @@ function Home({ lenis }) {
       <div className={styles.contentWrapper}>
         <TypeAnimation
           sequence={[
-            'Hello, I am Saiteja.',
+            "Hello, I am Saiteja.",
             2000,
             "Crafting digital solutions with code.",
             2000,
@@ -34,8 +34,8 @@ function Home({ lenis }) {
       </div>
 
       {/* Add the scroll-down button */}
-      <a 
-        href="#about" 
+      <a
+        href="#about"
         className={`${styles.scrollButton}  cursor-grow-target`}
         onClick={handleScrollClick}
       >

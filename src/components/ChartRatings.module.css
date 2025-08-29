@@ -16,7 +16,7 @@
 
 /* Adds the decorative underline consistent with other sections */
 .mainHeading::after {
-  content: '';
+  content: "";
   display: block;
   width: 80px;
   height: 3px;
@@ -39,7 +39,7 @@
   max-width: 550px; /* Optimal width for a radar chart */
   aspect-ratio: 1 / 1; /* Ensures it's a perfect square */
   max-height: 550px;
-  
+
   /* --- Premium Glassmorphism --- */
   background: var(--glass-bg); /* Use theme's glass color */
   backdrop-filter: blur(12px);
@@ -47,10 +47,8 @@
   border: 1px solid var(--border-color);
   box-shadow: 0 10px 30px -5px var(--shadow-color); /* Theme-aware shadow */
   border-radius: var(--border-radius);
-  
+
   padding: 1.5rem;
   box-sizing: border-box;
   transition: all 0.3s ease;
 }
-
-

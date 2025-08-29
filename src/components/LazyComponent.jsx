@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, Suspense } from 'react';
+import React, { useState, useEffect, useRef, Suspense } from "react";
 
 function LazyComponent({ children }) {
   const [isVisible, setIsVisible] = useState(false);
@@ -23,11 +23,11 @@ function LazyComponent({ children }) {
   return (
     // If it's visible, render the actual component. If not, render a placeholder.
     isVisible ? (
-      <Suspense fallback={<div style={{ height: '100vh' }}>Loading...</div>}>
+      <Suspense fallback={<div style={{ height: "100vh" }}>Loading...</div>}>
         {children}
       </Suspense>
     ) : (
-      <div ref={placeholderRef} style={{ height: '100vh' }} />
+      <div ref={placeholderRef} style={{ height: "100vh" }} />
     )
   );
 }
