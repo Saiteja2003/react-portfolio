@@ -4,9 +4,22 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/react-portfolio/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + React</title>
-    <script type="module" crossorigin src="/react-portfolio/assets/index-CMnyW9nE.js"></script>
-    <link rel="stylesheet" crossorigin href="/react-portfolio/assets/index-CJLO3dHO.css">
+    <title>Saiteja Challa - Portfolio</title>
+    <script>
+      (function() {
+        const theme = localStorage.getItem('theme');
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        
+        if (theme === 'dark' || (!theme && prefersDark)) {
+          document.documentElement.setAttribute('data-theme', 'dark');
+        }
+        else {
+      document.documentElement.classList.add('light-mode-flash');
+    }
+      })();
+    </script>
+    <script type="module" crossorigin src="/react-portfolio/assets/index-CYIMl1WQ.js"></script>
+    <link rel="stylesheet" crossorigin href="/react-portfolio/assets/index-CnZRH0KZ.css">
   </head>
   <body>
     <div id="root"></div>
