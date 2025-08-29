@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from 'react'; // 1. Import useEffect
 import { useLenis } from './hooks/useLenis'; // 2. Import Lenis
-
+import { ThemeProvider } from './context/ThemeContext';
 import Header from './components/header';
 import { Suspense } from 'react';
 import CustomCursor from './components/CustomCursor';
@@ -19,7 +19,8 @@ function App() {
   const lenis = useLenis(); // 2. Add state to hold the Lenis instance
 
   return (
-    <>
+    
+      <ThemeProvider>
       <CustomCursor />
       
       {/* 4. Pass the lenis instance down to the Header */}
@@ -42,7 +43,8 @@ function App() {
       <Footer lenis={lenis}  />
       </LazyComponent>
       </Suspense>
-    </>
+      </ThemeProvider>
+    
   );
 }
 

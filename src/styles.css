@@ -401,3 +401,20 @@ svg {
   width: inherit !important;
   height: inherit !important;
 }
+
+/* --- Glossy Flash Animation --- */
+@keyframes glossyFlash {
+  from {
+    /* Start with a slightly darker, neutral gray */
+    background-color: #e0e0e0;
+  }
+  to {
+    /* End on your theme's final background color */
+    background-color: var(--bg-color);
+  }
+}
+
+/* A class to apply the animation */
+.light-mode-flash {
+  animation: glossyFlash 0.6s ease-out forwards;
+}

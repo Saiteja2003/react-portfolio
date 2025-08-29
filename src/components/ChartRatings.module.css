@@ -48,7 +48,9 @@
   box-shadow: 0 10px 30px -5px var(--shadow-color); /* Theme-aware shadow */
   border-radius: var(--border-radius);
   
-  padding: 2rem;
+  padding: 1.5rem;
   box-sizing: border-box;
   transition: all 0.3s ease;
 }
+
+

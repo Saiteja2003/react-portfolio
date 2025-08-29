@@ -37,6 +37,12 @@ function ChartRatings() {
       });
 
       setChartOptions({
+          layout: {
+            padding: {
+               top: 10,
+               bottom: 80, // Add extra space at the bottom for the Node.js label
+           }
+         },
         scales: { r: {
           angleLines: { color: textColor + '80' },
           grid: { color: textColor + '40' }, // Softer grid lines

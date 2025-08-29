@@ -1,8 +1,9 @@
 // src/components/ThemeToggle.jsx
 import './ThemeToggle.css'; 
-import React, { useState, useEffect } from 'react';
+import React, { useContext } from 'react'; // Import useContext
+import { ThemeContext } from '../context/ThemeContext'; // Import your context
 
-// V V V V V  CHANGE THE ICON SIZES HERE  V V V V V
+// The icon definitions remain the same
 const MoonIcon = (
   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
     <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path>
@@ -15,18 +16,9 @@ const SunIcon = (
   </svg>
 );
 
-// ... the rest of the file is the same ...
 function ThemeToggle() {
-  const [theme, setTheme] = useState(() => localStorage.getItem('theme') || 'light');
-
-  useEffect(() => {
-    document.body.setAttribute('data-theme', theme);
-    localStorage.setItem('theme', theme);
-  }, [theme]);
-
-  const toggleTheme = () => {
-    setTheme(prevTheme => (prevTheme === 'light' ? 'dark' : 'light'));
-  };
+  // Get the theme and toggle function from the context
+  const { theme, toggleTheme } = useContext(ThemeContext);
 
   return (
     <button onClick={toggleTheme} className="theme-toggle-button" aria-label="Toggle theme">
