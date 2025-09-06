@@ -9,7 +9,7 @@ import CustomCursor from "./components/CustomCursor";
 import Home from "./components/Home";
 import LazyComponent from "./components/LazyComponent";
 import SkeletonLoader from "./components/SkeletonLoader";
-import { LenisProvider } from "./context/LenisContext";
+import { LenisProvider } from "@/context/LenisContext";
 
 const About = React.lazy(() => import("./components/about"));
 const Projects = React.lazy(() => import("./components/Projects"));
