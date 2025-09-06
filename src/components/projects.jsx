@@ -1,6 +1,7 @@
 // src/components/Projects.jsx
 import React from "react";
 import styles from "./Projects.module.css";
+import { PinContainer } from "./ui/PinContainer";
 
 // You would fetch this data from a CMS or a local file in a real app
 const projectData = [
@@ -43,7 +44,8 @@ function Projects() {
         <h2>My Work</h2>
         <div className={styles.projectsGrid}>
           {projectData.map((project, index) => (
-            <div
+            <PinContainer
+              title={project.title}
               key={index}
               className={`${styles.projectCard} cursor-grow-target`}
             >
@@ -80,7 +82,7 @@ function Projects() {
                   </a>
                 </div>
               </div>
-            </div>
+            </PinContainer>
           ))}
         </div>
       </div>

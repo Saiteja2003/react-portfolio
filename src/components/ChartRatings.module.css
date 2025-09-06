@@ -6,7 +6,7 @@
   flex-direction: column;
   align-items: center;
   text-align: center;
-  padding: 1rem 0; /* Add vertical padding for breathing room */
+  padding: 0.5rem 0; /* Add vertical padding for breathing room */
 }
 
 .mainHeading {
@@ -27,7 +27,7 @@
 
 .subtitle {
   margin-top: 1rem;
-  margin-bottom: 2rem; /* More space before the chart */
+  margin-bottom: 1rem; /* More space before the chart */
   font-size: 1.1rem;
   font-weight: 500;
   color: var(--text-color);
@@ -38,7 +38,7 @@
   width: 100%;
   max-width: 550px; /* Optimal width for a radar chart */
   aspect-ratio: 1 / 1; /* Ensures it's a perfect square */
-  max-height: 550px;
+  max-height: 500px;
 
   /* --- Premium Glassmorphism --- */
   background: var(--glass-bg); /* Use theme's glass color */

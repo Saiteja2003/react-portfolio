@@ -104,3 +104,126 @@
     text-align: left;
   }
 }
+@media (max-width: 480px) {
+  .timelineDot {
+    width: 16px;
+    height: 16px;
+    left: 18px;
+  }
+  .timelineContent {
+    margin-left: 40px;
+    padding: 0.75rem 1rem;
+  }
+  .title {
+    font-size: 1.25rem;
+  }
+}
+@media (max-width: 360px) {
+  .timelineContent {
+    margin-left: 35px;
+    padding: 0.5rem 0.75rem;
+  }
+  .title {
+    font-size: 1.1rem;
+  }
+}
+@media (max-width: 280px) {
+  .timelineContent {
+    margin-left: 30px;
+    padding: 0.5rem 0.5rem;
+  }
+  .title {
+    font-size: 1rem;
+  }
+}
+@media (max-width: 200px) {
+  .timelineContent {
+    margin-left: 25px;
+    padding: 0.5rem 0.5rem;
+  }
+  .title {
+    font-size: 0.9rem;
+  }
+}
+@media (max-width: 150px) {
+  .timelineContent {
+    margin-left: 20px;
+    padding: 0.5rem 0.5rem;
+  }
+  .title {
+    font-size: 0.8rem;
+  }
+}
+@media (max-width: 100px) {
+  .timelineContent {
+    margin-left: 15px;
+    padding: 0.5rem 0.5rem;
+  }
+  .title {
+    font-size: 0.7rem;
+  }
+}
+@media (max-width: 50px) {
+  .timelineContent {
+    margin-left: 10px;
+    padding: 0.5rem 0.5rem;
+  }
+  .title {
+    font-size: 0.6rem;
+  }
+}
+@media (max-width: 25px) {
+  .timelineContent {
+    margin-left: 5px;
+    padding: 0.5rem 0.5rem;
+  }
+  .title {
+    font-size: 0.5rem;
+  }
+}
+@media (max-width: 10px) {
+  .timelineContent {
+    margin-left: 2px;
+    padding: 0.5rem 0.5rem;
+  }
+  .title {
+    font-size: 0.4rem;
+  }
+}
+@media (max-width: 5px) {
+  .timelineContent {
+    margin-left: 1px;
+    padding: 0.5rem 0.5rem;
+  }
+  .title {
+    font-size: 0.3rem;
+  }
+}
+@media (max-width: 2px) {
+  .timelineContent {
+    margin-left: 0px;
+    padding: 0.5rem 0.5rem;
+  }
+  .title {
+    font-size: 0.2rem;
+  }
+}
+@media (max-width: 1px) {
+  .timelineContent {
+    margin-left: 0px;
+    padding: 0.5rem 0.5rem;
+  }
+  .title {
+    font-size: 0.1rem;
+  }
+}
+@media (max-width: 0px) {
+  .timelineContent {
+    margin-left: 0px;
+    padding: 0.5rem 0.5rem;
+  }
+  .title {
+    font-size: 0rem;
+  }
+}
+/* End of Timeline.module.css */

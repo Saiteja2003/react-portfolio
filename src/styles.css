@@ -152,7 +152,6 @@ a:hover {
   top: -15px;
   left: -15px;
   pointer-events: none;
-  transition: transform 0.2s ease-out;
   mix-blend-mode: difference;
   z-index: 9999;
 }

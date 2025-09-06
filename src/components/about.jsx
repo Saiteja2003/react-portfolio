@@ -27,7 +27,7 @@ function About() {
           trigger: containerRef.current,
           pin: true,
           scrub: 1,
-          end: "+=5000",
+          end: () => `+=${scrollDistance + 1500}`, // Extra space for horizontal scroll
         },
       });
 
@@ -45,7 +45,7 @@ function About() {
 
       tl.to(panels, {
         xPercent: -100 * (panels.length - 1),
-        ease: "none",
+        ease: "power1.inOut",
         duration: 1,
       });
     }, containerRef);

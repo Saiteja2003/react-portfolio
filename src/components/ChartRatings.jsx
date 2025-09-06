@@ -10,6 +10,7 @@ import {
 } from "chart.js";
 import { Radar } from "react-chartjs-2";
 import styles from "./ChartRatings.module.css";
+import { motion } from "framer-motion";
 
 ChartJS.register(RadialLinearScale, PointElement, LineElement, Filler, Tooltip);
 
@@ -67,7 +68,7 @@ function ChartRatings() {
             grid: { color: textColor + "40" }, // Softer grid lines
             pointLabels: {
               font: { size: 14, family: "'Inter', sans-serif" },
-              color: accentColor,
+              color: textColor,
             },
             ticks: {
               backdropColor: cardBgColor,
@@ -107,7 +108,7 @@ function ChartRatings() {
   if (!chartOptions.scales) return <div>Loading Chart...</div>;
 
   return (
-    <div className={styles.chartContainer}>
+    <motion.div className={styles.chartContainer}>
       <h2 className={styles.mainHeading}>My Skills</h2>
       <p className={styles.subtitle}>
         A visual representation of my proficiency across key technologies.
@@ -115,7 +116,7 @@ function ChartRatings() {
       <div className={styles.chartWrapper}>
         <Radar data={chartData} options={chartOptions} />
       </div>
-    </div>
+    </motion.div>
   );
 }
 
