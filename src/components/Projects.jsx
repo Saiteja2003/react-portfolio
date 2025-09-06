@@ -14,6 +14,7 @@ const projectData = [
     githubUrl: "#",
     imageUrl:
       "https://via.placeholder.com/600x400.png/3d5a80/ffffff?text=Project+Image",
+    featured: true,
   },
   {
     title: "Project Two",
@@ -38,6 +39,8 @@ const projectData = [
 ];
 
 function Projects() {
+  const featuredProjects = projectData.filter((p) => p.featured);
+  const regularProjects = projectData.filter((p) => !p.featured);
   return (
     <section id="projects">
       <div className="container">
@@ -52,47 +55,93 @@ function Projects() {
             My Work
           </motion.h2>
         </div>
+        {/* 2. Render the Featured Project(s) Section */}
+        {featuredProjects.length > 0 && (
+          <div className={styles.featuredContainer}>
+            {featuredProjects.map((project, index) => (
+              <div key={index} className={styles.featuredCard}>
+                <div className={styles.featuredImageContainer}>
+                  <img
+                    src={project.imageUrl}
+                    alt={`${project.title} screenshot`}
+                  />
+                </div>
+                <div className={styles.featuredCardContent}>
+                  <h5 className={styles.featuredBadge}>Featured Project</h5>
+                  <h3>{project.title}</h3>
+                  <p>{project.description}</p>
+                  <div className={styles.tags}>
+                    {project.tags.map((tag) => (
+                      <span key={tag} className={styles.tag}>
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                  <div className={styles.links}>
+                    <a
+                      href={project.liveUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Live Demo
+                    </a>
+                    <a
+                      href={project.githubUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      View Code
+                    </a>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
+        {/* 3. Render the Regular Projects Grid */}
         <div className={styles.projectsGrid}>
-          {projectData.map((project, index) => (
-            <PinContainer
-              title={project.title}
-              key={index}
-              className={`${styles.projectCard} cursor-grow-target`}
-            >
-              <div className={styles.imageContainer}>
-                <img
-                  src={project.imageUrl}
-                  alt={`${project.title} screenshot`}
-                />
-              </div>
-              <div className={styles.cardContent}>
-                <h3>{project.title}</h3>
-                <div className={styles.tags}>
-                  {project.tags.map((tag) => (
-                    <span key={tag} className={styles.tag}>
-                      {tag}
-                    </span>
-                  ))}
+          {regularProjects.map((project, index) => (
+            <div key={index} className={styles.pinWrapper}>
+              <PinContainer
+                title={project.title}
+                key={index}
+                className={`${styles.projectCard} cursor-grow-target`}
+              >
+                <div className={styles.imageContainer}>
+                  <img
+                    src={project.imageUrl}
+                    alt={`${project.title} screenshot`}
+                  />
                 </div>
-                <p>{project.description}</p>
-                <div className={styles.links}>
-                  <a
-                    href={project.liveUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    Live Demo
-                  </a>
-                  <a
-                    href={project.githubUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    View Code
-                  </a>
+                <div className={styles.cardContent}>
+                  <h3>{project.title}</h3>
+                  <div className={styles.tags}>
+                    {project.tags.map((tag) => (
+                      <span key={tag} className={styles.tag}>
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                  <p>{project.description}</p>
+                  <div className={styles.links}>
+                    <a
+                      href={project.liveUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Live Demo
+                    </a>
+                    <a
+                      href={project.githubUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      View Code
+                    </a>
+                  </div>
                 </div>
-              </div>
-            </PinContainer>
+              </PinContainer>
+            </div>
           ))}
         </div>
       </div>

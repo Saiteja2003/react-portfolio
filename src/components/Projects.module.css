@@ -126,6 +126,62 @@
   transform: translateY(-2px);
 }
 
+.featuredContainer {
+  margin-bottom: 4rem; /* Space between featured and regular projects */
+}
+
+.featuredCard {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr); /* 12-column grid for layout */
+  gap: 2rem;
+  align-items: center;
+
+  /* Apply the same glass effect */
+  background: var(--glass-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1.5px solid rgba(148, 163, 184, 0.3);
+  box-shadow: 0 8px 32px 0 var(--shadow-color);
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  padding: 2rem;
+}
+
+.featuredImageContainer {
+  grid-column: 1 / span 7; /* Image takes up ~60% of the width */
+  border-radius: calc(var(--border-radius) - 4px);
+  overflow: hidden;
+  box-shadow: 0 4px 15px var(--shadow-color);
+}
+
+.featuredImageContainer img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.featuredCardContent {
+  grid-column: 8 / span 5; /* Content takes up ~40% */
+}
+
+.featuredBadge {
+  color: var(--accent-color);
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 992px) {
+  .featuredCard {
+    display: flex;
+    flex-direction: column;
+    padding: 1.5rem;
+  }
+}
 @media (max-width: 600px) {
   .projectsGrid {
     grid-template-columns: 1fr;
