@@ -2,8 +2,9 @@
 
 import React from "react";
 import ThemeToggle from "./ThemeToggle";
-
-function Header({ lenis }) {
+import { useSharedLenis } from "@/context/LenisContext";
+function Header() {
+  const lenis = useSharedLenis();
   const handleNavClick = (event, targetSelector) => {
     event.preventDefault();
     const targetElement = document.querySelector(targetSelector);

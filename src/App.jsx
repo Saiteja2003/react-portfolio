@@ -9,6 +9,7 @@ import CustomCursor from "./components/CustomCursor";
 import Home from "./components/Home";
 import LazyComponent from "./components/LazyComponent";
 import SkeletonLoader from "./components/SkeletonLoader";
+import { LenisProvider } from "./context/LenisContext";
 
 const About = React.lazy(() => import("./components/about"));
 const Projects = React.lazy(() => import("./components/Projects"));
@@ -19,28 +20,32 @@ function App() {
 
   return (
     <ThemeProvider>
-      <CustomCursor />
+      <LenisProvider>
+        {/* 3. Add the CustomCursor component */}
 
-      {/* 4. Pass the lenis instance down to the Header */}
-      <Header lenis={lenis} />
-      <Home lenis={lenis} />
-      <main>
-        <Suspense fallback={<SkeletonLoader />}>
+        <CustomCursor />
+
+        {/* 4. Pass the lenis instance down to the Header */}
+        <Header />
+        <Home />
+        <main>
+          <Suspense fallback={<SkeletonLoader />}>
+            <LazyComponent>
+              <About />
+            </LazyComponent>
+          </Suspense>
+          <Suspense fallback={<SkeletonLoader />}>
+            <LazyComponent>
+              <Projects />
+            </LazyComponent>
+          </Suspense>
+        </main>
+        <Suspense fallback={<div />}>
           <LazyComponent>
-            <About />
+            <Footer />
           </LazyComponent>
         </Suspense>
-        <Suspense fallback={<SkeletonLoader />}>
-          <LazyComponent>
-            <Projects />
-          </LazyComponent>
-        </Suspense>
-      </main>
-      <Suspense fallback={<div />}>
-        <LazyComponent>
-          <Footer lenis={lenis} />
-        </LazyComponent>
-      </Suspense>
+      </LenisProvider>
     </ThemeProvider>
   );
 }

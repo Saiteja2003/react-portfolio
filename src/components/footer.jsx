@@ -2,8 +2,10 @@
 import React from "react";
 import styles from "./Footer.module.css";
 import { Github, Linkedin, Mail } from "lucide-react"; // Example icons
+import { useSharedLenis } from "@/context/LenisContext";
 
-function Footer({ lenis }) {
+function Footer() {
+  const lenis = useSharedLenis();
   const handleGoToTop = (e) => {
     e.preventDefault();
     lenis?.scrollTo(0, { duration: 2 });
@@ -22,19 +24,20 @@ function Footer({ lenis }) {
               href="mailto:challasaiteja26@gmail.com"
               className={styles.emailLink}
             >
-              challasaiteja26@gmail.com
+              <Mail size={20} />
+              <span>Get in Touch</span>
             </a>
           </div>
           <div className={styles.footerNav}>
             <div className={styles.socials}>
-              <a href="#" aria-label="GitHub">
+              <a href="https://github.com/Saiteja2003" aria-label="GitHub">
                 <Github />
               </a>
-              <a href="#" aria-label="LinkedIn">
+              <a
+                href="https://www.linkedin.com/in/saiteja-challa-124555228"
+                aria-label="LinkedIn"
+              >
                 <Linkedin />
-              </a>
-              <a href="mailto:challasaiteja26@gmail.com" aria-label="Email">
-                <Mail />
               </a>
             </div>
             <button className={styles.topLink} onClick={handleGoToTop}>

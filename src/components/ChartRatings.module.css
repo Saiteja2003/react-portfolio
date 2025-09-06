@@ -6,12 +6,29 @@
   flex-direction: column;
   align-items: center;
   text-align: center;
-  padding: 0.5rem 0; /* Add vertical padding for breathing room */
+  margin: 0 auto 4rem auto; /* Center and add bottom margin */
+  padding: 2rem;
+  box-sizing: border-box;
+  transition: all 0.3s ease;
 }
 
 .mainHeading {
-  color: var(--primary-color);
-  margin-bottom: 0.5rem;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+
+  /* Sizing and Spacing */
+  width: 30%; /* Make it span the full container width */
+  padding: 1.5rem 0; /* A little more vertical padding */
+  margin: 0 auto 2rem auto; /* Center it and provide bottom margin */
+
+  /* Text Styles */
+  font-size: 2.5rem;
+  color: var(--accent-color);
+  text-align: center;
+
+  /* Smooth transition for theme changes */
+  transition: background-color 0.3s ease;
 }
 
 /* Adds the decorative underline consistent with other sections */
@@ -27,7 +44,7 @@
 
 .subtitle {
   margin-top: 1rem;
-  margin-bottom: 1rem; /* More space before the chart */
+  margin-bottom: 0.5rem; /* More space before the chart */
   font-size: 1.1rem;
   font-weight: 500;
   color: var(--text-color);
@@ -38,17 +55,17 @@
   width: 100%;
   max-width: 550px; /* Optimal width for a radar chart */
   aspect-ratio: 1 / 1; /* Ensures it's a perfect square */
-  max-height: 500px;
+  max-height: 650px;
 
   /* --- Premium Glassmorphism --- */
   background: var(--glass-bg); /* Use theme's glass color */
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border: 1px solid var(--border-color);
+  border: 3px solid var(--border-color);
   box-shadow: 0 10px 30px -5px var(--shadow-color); /* Theme-aware shadow */
   border-radius: var(--border-radius);
 
-  padding: 1.5rem;
+  padding: 2.9rem;
   box-sizing: border-box;
   transition: all 0.3s ease;
 }

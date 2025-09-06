@@ -5,20 +5,44 @@
   gap: 2rem;
 }
 
+.mainHeading {
+  text-align: center;
+  font-size: 2.5rem;
+  color: var(--accent-color);
+  margin-bottom: 3rem;
+  position: relative;
+}
 .projectCard {
-  background-color: var(--card-bg-color);
-  border: 1px solid var(--border-color);
+  width: 100%; /* Ensure the card fills the wrapper */
+
+  /* --- The Glassmorphism Effect --- */
+  background: var(--glass-bg);
+  backdrop-filter: blur(16px); /* A slightly stronger blur */
+  -webkit-backdrop-filter: blur(16px);
+  border: 1.5px solid rgba(148, 163, 184, 0.3);
+  box-shadow: 0 8px 32px 0 var(--shadow-color);
   border-radius: var(--border-radius);
-  overflow: hidden;
+
+  /* --- The Rendering Fix --- */
+  /* This CSS trick creates a new stacking context and forces the browser 
+     to render the backdrop-filter correctly within the 3D animation. */
+  transform: translateZ(0);
+
+  /* --- The Flexbox Fix for Equal Heights --- */
   display: flex;
   flex-direction: column;
+  overflow: hidden;
   transition: var(--transition-smooth);
-  box-shadow: 0 4px 10px var(--shadow-color);
 }
 
 .projectCard:hover {
-  transform: translateY(-8px);
   box-shadow: 0 12px 24px var(--shadow-color);
+}
+
+.headingContainer {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 3rem; /* Add the space below the heading here */
 }
 
 .imageContainer {
@@ -71,6 +95,16 @@
   flex-grow: 1; /* Pushes links to the bottom */
 }
 
+.pinWrapper {
+  /* This is crucial for the 3D effect to have space */
+  perspective: 1000px;
+  display: flex;
+}
+
+.pinWrapper:hover {
+  box-shadow: 0 12px 24px var(--shadow-color);
+}
+
 .links {
   display: flex;
   gap: 1rem;
@@ -90,4 +124,44 @@
   opacity: 0.9;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   transform: translateY(-2px);
+}
+
+@media (max-width: 600px) {
+  .projectsGrid {
+    grid-template-columns: 1fr;
+  }
+}
+@media (max-width: 400px) {
+  .cardContent {
+    padding: 1rem;
+  }
+
+  .links a {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+  }
+}
+@media (max-width: 350px) {
+  .imageContainer {
+    aspect-ratio: 4 / 3;
+  }
+}
+@media (max-width: 320px) {
+  .cardContent h3 {
+    font-size: 1.1rem;
+  }
+
+  .tags {
+    gap: 0.25rem;
+  }
+
+  .tag {
+    font-size: 0.7rem;
+    padding: 0.2rem 0.5rem;
+  }
+
+  .links a {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.85rem;
+  }
 }

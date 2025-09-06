@@ -58,7 +58,7 @@ function About() {
         {/* Panel 1: The Timeline */}
         <div className={styles.panel}>
           <div ref={timelineWrapperRef} className={styles.timelineWrapper}>
-            <h2 className={styles.panelHeading}>My Journey</h2>
+            <h3 className={styles.panelHeading}>My Journey</h3>
             <Timeline scrollProgress={timelineProgress} />
           </div>
         </div>

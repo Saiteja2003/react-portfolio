@@ -5,29 +5,30 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@400;600&display=swap");
 
 :root {
-  /* Color Palette - Light Mode (Default) */
-  --bg-color: #f4f5f7; /* A softer, slightly off-white */
-  --card-bg-color: #ffffff;
-  --primary-color: #1a1a1a; /* A deep, near-black for strong contrast */
-  --text-color: #555555; /* A softer gray for body text */
-  --accent-color: #3d5a80; /* A sophisticated, muted blue */
-  --accent-gradient: linear-gradient(
-    45deg,
-    #3d5a80,
-    #98c1d9
-  ); /* For highlights */
-  --border-color: #e0e0e0;
-  --shadow-color: rgba(26, 26, 26, 0.05);
-  --glass-bg: rgba(255, 255, 255, 0.6); /* For glassmorphism effect */
+  /* Color Palette - "Arctic Night" Theme (Light Mode) */
+  --bg-color: #0f172a; /* A deep navy blue fallback */
+  --card-bg-color: rgba(
+    30,
+    41,
+    59,
+    0.7
+  ); /* A semi-transparent dark slate blue */
+  --primary-color: #f8fafc; /* A bright, clean off-white for headings */
+  --text-color: #cbd5e1; /* A softer slate gray for body text */
+  --accent-color: #60a5fa; /* A vibrant, cool sky blue */
+  --accent-gradient: linear-gradient(45deg, #60a5fa, #3b82f6);
+  --border-color: rgba(148, 163, 184, 0.2); /* A very subtle border */
+  --shadow-color: rgba(0, 0, 0, 0.2); /* A darker shadow for better contrast */
+  --glass-bg: rgba(15, 23, 42, 0.7); /* A deep, navy glass effect */
   --backdrop-blur: 10px;
 
   /* Typography */
-  --font-heading: "Playfair Display", serif; /* An elegant, high-contrast serif */
+  --font-heading: "Playfair Display", serif;
   --font-body: "Inter", sans-serif;
 
   /* Spacing & Radii */
   --container-width: 1140px;
-  --border-radius: 12px; /* Consistent border radius */
+  --border-radius: 12px;
 
   /* Transitions */
   --transition-smooth: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
@@ -46,13 +47,6 @@
   /* --- The Trick to Dark Mode Shadows --- */
   /* Dark shadows are invisible on dark backgrounds. We use a faint, light shadow to create a "glow" effect. */
   --shadow-color: rgba(226, 232, 240, 0.05);
-
-  --glass-bg: rgba(
-    35,
-    39,
-    47,
-    0.7
-  ); /* A darker, translucent background for the glass effect */
 }
 #root {
   width: 100%;
@@ -76,10 +70,14 @@ html::-webkit-scrollbar {
 
 body {
   font-family: var(--font-body);
-  background-color: var(--bg-color);
   color: var(--text-color);
   line-height: 1.8;
-  transition: background-color 0.3s ease, color 0.3s ease; /* For theme switching */
+  background-image: url("/images/hero-bg.jpg");
+  background-size: cover;
+  background-position: center center;
+  background-attachment: fixed; /* This makes it static! */
+  background-color: #1a1d23; /* Dark fallback color */
+  transition: color 0.3s ease, color 0.3s ease; /* For theme switching */
 }
 
 main {
@@ -104,29 +102,40 @@ h3 {
   margin-bottom: 1.5rem;
   line-height: 1.3;
 }
-
 h2 {
-  font-size: clamp(2rem, 5vw, 3rem); /* Fluid typography */
-  text-align: center; /* Center section titles for a formal look */
-  border-bottom: none; /* Remove the underline */
-  padding-bottom: 0;
+  font-size: clamp(2rem, 5vw, 3rem);
   position: relative;
-  margin-bottom: 3rem;
+
+  /* The Gradient Text Effect */
+  background: var(--accent-gradient);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+
+  /* The NEW Glass Panel "Stage" */
+  display: inline-block; /* Allows us to size the panel to the text */
+  padding: 1rem 2.5rem;
+  border-radius: var(--border-radius);
+  border: 1px solid var(--border-color);
+  background-color: var(--glass-bg); /* Use the glass effect for the panel */
+  box-shadow: 0 8px 32px 0 var(--shadow-color);
+  backdrop-filter: blur(var(--backdrop-blur));
+  -webkit-backdrop-filter: blur(var(--backdrop-blur));
 }
 
-/* Add a subtle decorative element to section titles */
+/* The decorative underline now sits outside the glass panel */
 h2::after {
   content: "";
   position: absolute;
-  bottom: -1rem;
+  bottom: -1rem; /* Positioned below the panel */
   left: 50%;
   transform: translateX(-50%);
-  width: 50px;
+  width: 60px; /* Slightly wider */
   height: 3px;
   background: var(--accent-gradient);
   border-radius: 2px;
 }
-
 a {
   color: var(--accent-color);
   text-decoration: none;
@@ -288,7 +297,7 @@ section[id] {
   top: -15px;
   left: -15px;
   pointer-events: none;
-  transition: transform 0.2s ease-out;
+  transition: transform 0.1s ease-out;
   mix-blend-mode: difference;
   z-index: 9999;
 }
