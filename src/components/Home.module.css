@@ -2,19 +2,31 @@
 
 /* Add a wrapper to group the text */
 .contentWrapper {
+  position: relative;
+  z-index: 2; /* Sits on top of the tilt container */
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  text-align: center;
+  /* Add a backdrop for readability against the background */
+  padding: 2rem;
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: var(--border-radius);
+  transform: translateZ(50px);
 }
 
 /* Style for the new subtitle */
 .subtitle {
   font-size: 1.2rem;
-  color: var(--text-color);
+  color: #eee; /* Ensure it's readable */
   margin-top: 1rem;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
 }
-
+.typewriter {
+  color: #fff; /* Ensure it's readable */
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+}
 /* Style for the scroll-down button container */
 .scrollButton {
   position: absolute;
@@ -39,6 +51,73 @@
   animation: scroll-bounce 1.5s ease-out infinite;
 }
 
+.tiltWrapper {
+  /* This gives the tilt effect a nice 'card' to live in */
+  position: relative;
+  width: 100%;
+  max-width: 800px;
+  padding: 2rem;
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--backdrop-blur));
+  -webkit-backdrop-filter: blur(var(--backdrop-blur));
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  transform-style: preserve-3d;
+}
+
+.homeContainer {
+  position: relative; /* Needed for absolute positioning of children */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  overflow: hidden; /* Prevent tilt overflow */
+}
+
+.heroWrapper {
+  position: relative;
+  width: 100%;
+  max-width: 800px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tiltContainer {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 1; /* Sits behind the text */
+}
+
+.floatingShape {
+  position: absolute;
+  border-radius: 20%;
+  background: var(--accent-gradient);
+  opacity: 0.1; /* Very subtle! */
+  filter: blur(20px); /* Soft, glowing effect */
+  transform: translateZ(-50px);
+}
+
+/* Individual positions and sizes for the shapes */
+.shape1 {
+  width: 250px;
+  height: 250px;
+  top: 10%;
+  left: 5%;
+}
+.shape2 {
+  width: 150px;
+  height: 150px;
+  top: 60%;
+  right: 15%;
+}
+.shape3 {
+  width: 200px;
+  height: 200px;
+  top: 30%;
+  right: 30%;
+}
 /* The animation for the dot */
 @keyframes scroll-bounce {
   0% {

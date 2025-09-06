@@ -1,5 +1,6 @@
 // src/components/ChartRatings.jsx
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
+import { ThemeContext } from "../context/ThemeContext";
 import {
   Chart as ChartJS,
   RadialLinearScale,
@@ -15,6 +16,7 @@ import { motion } from "framer-motion";
 ChartJS.register(RadialLinearScale, PointElement, LineElement, Filler, Tooltip);
 
 function ChartRatings() {
+  const { theme } = useContext(ThemeContext);
   const [chartData, setChartData] = useState({ datasets: [] });
   const [chartOptions, setChartOptions] = useState({});
 
@@ -114,7 +116,7 @@ function ChartRatings() {
         A visual representation of my proficiency across key technologies.
       </p>
       <div className={styles.chartWrapper}>
-        <Radar data={chartData} options={chartOptions} />
+        <Radar key={theme} data={chartData} options={chartOptions} />
       </div>
     </motion.div>
   );

@@ -23,8 +23,11 @@
 }
 
 .emailLink {
+  display: inline-flex; /* Use inline-flex to align items */
+  align-items: center; /* Vertically center the icon and text */
+  gap: 0.75rem;
+  justify-content: center;
   /* --- Core Styles --- */
-  display: inline-block; /* Allows us to apply padding and border */
   margin-top: 1rem;
   font-size: 1.1rem;
   font-weight: 500;
@@ -36,7 +39,7 @@
   border: 2px solid var(--accent-color); /* The border you wanted */
   border-radius: 99px; /* This creates the oval/pill shape */
   color: var(--accent-color); /* Text color matches the border */
-  background-color: rgb(255, 255, 255); /* Makes it a "ghost button" */
+  background-color: transparent; /* Makes it a "ghost button" */
 }
 
 /* --- Add a hover effect to make it interactive --- */

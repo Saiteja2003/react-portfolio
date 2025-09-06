@@ -2,7 +2,7 @@
 import React from "react";
 import styles from "./Projects.module.css";
 import { PinContainer } from "./ui/PinContainer";
-
+import { motion } from "framer-motion";
 // You would fetch this data from a CMS or a local file in a real app
 const projectData = [
   {
@@ -41,7 +41,17 @@ function Projects() {
   return (
     <section id="projects">
       <div className="container">
-        <h2>My Work</h2>
+        <div className={styles.headingContainer}>
+          <motion.h2
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.5 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className={styles.mainHeading}
+          >
+            My Work
+          </motion.h2>
+        </div>
         <div className={styles.projectsGrid}>
           {projectData.map((project, index) => (
             <PinContainer
