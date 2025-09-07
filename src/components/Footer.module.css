@@ -1,25 +1,67 @@
 /* src/components/Footer.module.css */
 
 .footer {
-  padding: 1.5rem 0;
-  background-color: rgba(
-    15,
-    23,
-    42,
-    0.5
-  ); /* A subtle, dark transparent background */
-  border-top: 1px solid var(--border-color);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  z-index: 5; /* Sits below the main content */
   position: relative;
+  z-index: 5;
+  background-color: var(--card-bg-color);
+  padding-top: 1.5rem; /* Give space for the CTA */
 }
 
-.footerContent {
+.ctaSection {
+  text-align: center;
+  padding-bottom: 2rem;
+  margin-bottom: 2rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.heading {
+  font-family: var(--font-heading);
+  font-size: clamp(2rem, 5vw, 2.5rem);
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+}
+
+.subheading {
+  max-width: 500px;
+  margin: 0 auto 2rem auto;
+  color: var(--text-color);
+  font-size: 1.1rem; /* Slightly larger for emphasis */
+  font-weight: 400; /* A clean, readable weight */
+  line-height: 1.7; /* More space between lines for readability */
+  letter-spacing: 0.5px; /* Adds an airy, refined feel */
+  opacity: 0.9;
+}
+
+.emailLink {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  font-size: 1.1rem;
+  font-weight: 500;
+  transition: var(--transition-smooth);
+  cursor: none;
+  padding: 0.75rem 1.5rem;
+  border: 2px solid var(--accent-color);
+  border-radius: 99px;
+  color: var(--accent-color);
+  background-color: transparent;
+}
+
+.emailLink:hover {
+  background-color: var(--accent-color);
+  color: var(--card-bg-color);
+  transform: translateY(-2px);
+}
+
+/* --- Footer Bar Styles --- */
+
+.footerBar {
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 1.5rem;
+  padding: 1.5rem 0;
 }
 
 .copyright {
@@ -30,7 +72,6 @@
 .socials {
   display: flex;
   gap: 1.5rem;
-  /* This will auto-center the socials between the other two elements */
   margin: 0 auto;
 }
 
@@ -61,13 +102,12 @@
   color: #fff;
 }
 
-/* Responsive adjustment for small screens */
 @media (max-width: 600px) {
-  .footerContent {
+  .footerBar {
     flex-direction: column;
     gap: 1.5rem;
   }
   .socials {
-    order: -1; /* Move socials to the top on mobile */
+    order: -1;
   }
 }
