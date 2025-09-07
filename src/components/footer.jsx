@@ -12,45 +12,25 @@ function Footer() {
   };
 
   return (
-    <footer id="contact" className={styles.footer}>
-      <div className="container">
-        <div className={styles.footerContent}>
-          <div className={styles.contactInfo}>
-            <h3>Let's Connect</h3>
-            <p>
-              I'm currently seeking new opportunities. Feel free to reach out.
-            </p>
-            <a
-              href="mailto:challasaiteja26@gmail.com"
-              className={styles.emailLink}
-            >
-              <Mail size={20} />
-              <span>Get in Touch</span>
-            </a>
-          </div>
-          <div className={styles.footerNav}>
-            <div className={styles.socials}>
-              <a href="https://github.com/Saiteja2003" aria-label="GitHub">
-                <Github />
-              </a>
-              <a
-                href="https://www.linkedin.com/in/saiteja-challa-124555228"
-                aria-label="LinkedIn"
-              >
-                <Linkedin />
-              </a>
-            </div>
-            <button className={styles.topLink} onClick={handleGoToTop}>
-              Back to Top ↑
-            </button>
-          </div>
+    <footer className={styles.footer}>
+      <div className={`${styles.footerContent} container`}>
+        <p className={styles.copyright}>
+          &copy; {new Date().getFullYear()} Saiteja Challa All rights reserved.
+        </p>
+        <div className={styles.socials}>
+          <a href="#" aria-label="GitHub" className="cursor-grow-target">
+            <Github />
+          </a>
+          <a href="#" aria-label="LinkedIn" className="cursor-grow-target">
+            <Linkedin />
+          </a>
         </div>
-        <div className={styles.footerBottom}>
-          <p>
-            &copy; {new Date().getFullYear()} Saiteja Challa. All Rights
-            Reserved.
-          </p>
-        </div>
+        <button
+          className={`${styles.topLink} cursor-grow-target`}
+          onClick={handleGoToTop}
+        >
+          Back to Top ↑
+        </button>
       </div>
     </footer>
   );

@@ -6,6 +6,7 @@ import { ThemeProvider } from "./context/ThemeContext";
 import Header from "./components/header";
 import About from "./components/about";
 import Projects from "./components/Projects";
+import ContactCTA from "./components/ContactCTA";
 import Footer from "./components/footer";
 import CustomCursor from "./components/CustomCursor";
 import Home from "./components/Home";
@@ -28,6 +29,7 @@ function App() {
           <About />
           <Projects />
         </main>
+        <ContactCTA />
         <Footer />
       </LenisProvider>
     </ThemeProvider>

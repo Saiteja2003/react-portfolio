@@ -1,0 +1,61 @@
+/* src/components/ContactCTA.module.css */
+
+.contactSection {
+  text-align: center;
+  padding: 6rem 1.5rem 2rem;
+  /* Give it its own space */
+}
+
+.contentBox {
+  max-width: 100%; /* Constrain the width of the panel */
+  margin: 0 auto; /* Center the panel */
+  padding: 2.5rem;
+
+  /* The Glassmorphism Effect */
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--backdrop-blur));
+  -webkit-backdrop-filter: blur(var(--backdrop-blur));
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  box-shadow: 0 8px 32px 0 var(--shadow-color);
+}
+
+.heading {
+  font-family: var(--font-heading);
+  font-size: clamp(2rem, 5vw, 2.5rem);
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+}
+
+.subheading {
+  max-width: 500px;
+  margin: 0 auto 2rem auto;
+  color: var(--text-color);
+  font-size: 1.1rem;
+  font-weight: 400;
+  line-height: 1.7;
+  letter-spacing: 0.5px;
+  opacity: 0.9;
+}
+
+.emailLink {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  font-size: 1.1rem;
+  font-weight: 500;
+  transition: var(--transition-smooth);
+  cursor: none;
+  padding: 0.75rem 1.5rem;
+  border: 2px solid var(--accent-color);
+  border-radius: 99px;
+  color: var(--accent-color);
+  background-color: transparent;
+}
+
+.emailLink:hover {
+  background-color: var(--accent-color);
+  color: var(--card-bg-color);
+  transform: translateY(-2px);
+}

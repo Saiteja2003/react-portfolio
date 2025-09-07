@@ -1,63 +1,101 @@
 // src/components/Home.jsx
 
-import React from "react";
-import { TypeAnimation } from "react-type-animation";
-import styles from "./Home.module.css";
+import React, { useState, useEffect, useRef } from "react";
+import Typewriter from "typewriter-effect";
 import Tilt from "react-parallax-tilt";
+import styles from "./Home.module.css";
 import { useSharedLenis } from "@/context/LenisContext";
 
-const TiltableShape = ({ className }) => (
+// A simple component for the decorative floating shapes
+const FloatingShape = ({ className }) => (
   <div className={`${styles.floatingShape} ${className}`} />
 );
 
 function Home() {
   const lenis = useSharedLenis();
-  const handleScrollClick = () => {
-    e.preventDefault(); // Prevent default link behavior
+  const [isHovered, setIsHovered] = useState(false);
+  const typewriterRef = useRef(null);
+
+  const handleScrollClick = (e) => {
+    e.preventDefault();
     if (lenis) {
-      lenis.scrollTo("#about"); // Tell Lenis to scroll to the About section
+      lenis.scrollTo("#about");
     }
   };
 
+  // This effect will now work correctly because the typewriter component is never destroyed
+  useEffect(() => {
+    if (typewriterRef.current) {
+      if (isHovered) {
+        typewriterRef.current.pause();
+      } else {
+        typewriterRef.current.start();
+      }
+    }
+  }, [isHovered]);
+
   return (
     <section id="home" className={styles.homeContainer}>
-      <Tilt
-        className={styles.tiltWrapper}
-        perspective={1500}
-        scale={1.02}
-        gyroscope={true}
-        tiltMaxAngleX={10}
-        tiltMaxAngleY={10}
+      <div
+        className={styles.heroWrapper}
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
       >
-        <div className={styles.heroWrapper}>
-          <TiltableShape className={styles.shape1} />
-          <TiltableShape className={styles.shape2} />
-          <TiltableShape className={styles.shape3} />
+        <Tilt
+          className={styles.tiltWrapper}
+          perspective={1500}
+          glareEnable={true}
+          glareMaxOpacity={0.1}
+          scale={1.02}
+          gyroscope={true}
+        >
+          <FloatingShape className={styles.shape1} />
+          <FloatingShape className={styles.shape2} />
+          <FloatingShape className={styles.shape3} />
 
           <div className={styles.contentWrapper}>
-            <TypeAnimation
-              sequence={[
-                "Hello, I am Saiteja.",
-                2000,
-                "Crafting digital solutions with code.",
-                2000,
-                "Let's Build Together.",
-                3000,
-              ]}
-              wrapper="h1"
-              cursor={true}
-              repeat={0}
-              className={styles.typewriter}
-            />
-            {/* Add a static subtitle below the typewriter */}
+            {/* ✅ This is the new structure */}
+            <h1
+              className={`${styles.typewriterWrapper} ${
+                isHovered ? styles.isHovered : ""
+              }`}
+            >
+              {/* The hover message is now always present, but hidden by default */}
+              <span className={styles.hoverMessage}>
+                You can control the perspective.
+              </span>
+
+              {/* The typewriter is also always present */}
+              <Typewriter
+                onInit={(typewriter) => {
+                  typewriterRef.current = typewriter;
+                  typewriter
+                    .typeString("Hello, I am Saiteja.")
+                    .pauseFor(2000)
+                    .deleteAll()
+                    .typeString("Crafting digital solutions with code.")
+                    .pauseFor(2000)
+                    .deleteAll()
+                    .typeString("<strong>Let's Build Together.</strong>")
+                    .start();
+                }}
+                options={{
+                  loop: false,
+                  delay: 50,
+                  deleteSpeed: 30,
+                  wrapperClassName: styles.typewriter, // Apply styles to the typewriter's wrapper
+                  cursorClassName: styles.typewriter, // Apply styles to the cursor
+                }}
+              />
+            </h1>
             <p className={styles.subtitle}>Building ideas into reality.</p>
           </div>
-        </div>
-      </Tilt>
-      {/* Add the scroll-down button */}
+        </Tilt>
+      </div>
+
       <a
         href="#about"
-        className={`${styles.scrollButton}  cursor-grow-target`}
+        className={`${styles.scrollButton} cursor-grow-target`}
         onClick={handleScrollClick}
       >
         <span></span>
