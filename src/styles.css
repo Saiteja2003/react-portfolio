@@ -82,6 +82,9 @@ body {
 
 main {
   padding-top: 4rem; /* More space below the sticky header */
+  z-index: 20;
+  position: relative;
+  padding-bottom: 6rem;
 }
 
 section {

@@ -1,40 +1,39 @@
 // src/components/Projects.jsx
 import React from "react";
 import styles from "./Projects.module.css";
-import { PinContainer } from "./ui/PinContainer";
 import { motion } from "framer-motion";
 // You would fetch this data from a CMS or a local file in a real app
 const projectData = [
   {
-    title: "Project One",
+    title: "NexusReader",
     description:
-      "A detailed description of my first project, showcasing the problem it solves and the tech used.",
-    tags: ["React", "Node.js", "CSS Grid"],
-    liveUrl: "#",
-    githubUrl: "#",
-    imageUrl:
-      "https://via.placeholder.com/600x400.png/3d5a80/ffffff?text=Project+Image",
+      "A modern news aggregator that collects and displays articles from multiple sources in one clean, responsive interface. Built for speed, usability, and a premium reading experience.",
+    tags: ["React", "Node.js", "CSS", "API", "RSS"],
+    liveUrl: "https://www.nexusreader.org/",
+    githubUrl: {
+      client: "https://github.com/Saiteja2003/nexus-reader-client.git",
+      api: "https://github.com/Saiteja2003/nexus-reader-api.git",
+    },
+    imageUrl: "/react-portfolio/images/nexus-reader-tiny.png",
     featured: true,
   },
   {
-    title: "Project Two",
+    title: "My Portfolio Website",
     description:
       "This project focused on UI/UX, implementing advanced animations and a seamless user flow.",
-    tags: ["UI/UX", "GSAP", "Framer Motion"],
+    tags: ["UI/UX", "Lenis", "Framer Motion"],
     liveUrl: "#",
-    githubUrl: "#",
-    imageUrl:
-      "https://via.placeholder.com/600x400.png/98c1d9/1a1a1a?text=Project+Image",
+    githubUrl: "https://github.com/Saiteja2003/react-portfolio.git",
+    imageUrl: "/react-portfolio/images/portfolio.png",
   },
   {
-    title: "Project Three",
+    title: "Archetech Global",
     description:
-      "A data-driven application that visualizes complex datasets in an intuitive way.",
-    tags: ["Data Viz", "Chart.js", "API"],
-    liveUrl: "#",
-    githubUrl: "#",
-    imageUrl:
-      "https://via.placeholder.com/600x400.png/e0fbfc/1a1a1a?text=Project+Image",
+      "A premium freelance marketplace designed for seamless collaboration between clients and professionals, featuring a modern, high-end UI and smooth user experience.",
+    tags: ["Next.js", "TypeScript", "Tailwind CSS"],
+    liveUrl: "https://www.archetechglobal.com/",
+    githubUrl: "https://github.com/Saiteja2003/ATG-Landing_Page.git",
+    imageUrl: "/react-portfolio/images/archetechglobal.png",
   },
 ];
 
@@ -85,13 +84,34 @@ function Projects() {
                     >
                       Live Demo
                     </a>
-                    <a
-                      href={project.githubUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      View Code
-                    </a>
+                    {typeof project.githubUrl === "object" ? (
+                      // If it's an object, render two buttons
+                      <>
+                        <a
+                          href={project.githubUrl.client}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          Client Code
+                        </a>
+                        <a
+                          href={project.githubUrl.api}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          API Code
+                        </a>
+                      </>
+                    ) : (
+                      // Otherwise, render a single button
+                      <a
+                        href={project.githubUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        View Code
+                      </a>
+                    )}
                   </div>
                 </div>
               </div>
@@ -101,20 +121,22 @@ function Projects() {
         {/* 3. Render the Regular Projects Grid */}
         <div className={styles.projectsGrid}>
           {regularProjects.map((project, index) => (
-            <div key={index} className={styles.pinWrapper}>
-              <PinContainer
-                title={project.title}
-                key={index}
-                className={`${styles.projectCard} cursor-grow-target`}
-              >
-                <div className={styles.imageContainer}>
-                  <img
-                    src={project.imageUrl}
-                    alt={`${project.title} screenshot`}
-                  />
-                </div>
-                <div className={styles.cardContent}>
+            <article
+              key={index}
+              className={`${styles.projectCard} cursor-grow-target`}
+            >
+              <img
+                src={project.imageUrl}
+                alt={`${project.title} screenshot`}
+                className={styles.cardImage}
+              />
+
+              <div className={styles.cardContentWrapper}>
+                <div className={styles.cardHeader}>
                   <h3>{project.title}</h3>
+                </div>
+                <div className={styles.cardDetails}>
+                  <p>{project.description}</p>
                   <div className={styles.tags}>
                     {project.tags.map((tag) => (
                       <span key={tag} className={styles.tag}>
@@ -122,7 +144,6 @@ function Projects() {
                       </span>
                     ))}
                   </div>
-                  <p>{project.description}</p>
                   <div className={styles.links}>
                     <a
                       href={project.liveUrl}
@@ -140,8 +161,8 @@ function Projects() {
                     </a>
                   </div>
                 </div>
-              </PinContainer>
-            </div>
+              </div>
+            </article>
           ))}
         </div>
       </div>

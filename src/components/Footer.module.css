@@ -1,70 +1,85 @@
 /* src/components/Footer.module.css */
+
 .footer {
+  position: relative;
+  z-index: 5;
   background-color: var(--card-bg-color);
-  padding: 4rem 0 2rem;
-  border-top: 1px solid var(--border-color);
-  color: var(--text-color);
+  padding-top: 1.5rem; /* Give space for the CTA */
 }
 
-.footerContent {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  flex-wrap: wrap;
-  gap: 2rem;
-  padding-bottom: 3rem;
+.ctaSection {
+  text-align: center;
+  padding-bottom: 2rem;
   margin-bottom: 2rem;
   border-bottom: 1px solid var(--border-color);
 }
 
-.contactInfo h3 {
+.heading {
+  font-family: var(--font-heading);
+  font-size: clamp(2rem, 5vw, 2.5rem);
   color: var(--primary-color);
   margin-bottom: 1rem;
 }
 
+.subheading {
+  max-width: 500px;
+  margin: 0 auto 2rem auto;
+  color: var(--text-color);
+  font-size: 1.1rem; /* Slightly larger for emphasis */
+  font-weight: 400; /* A clean, readable weight */
+  line-height: 1.7; /* More space between lines for readability */
+  letter-spacing: 0.5px; /* Adds an airy, refined feel */
+  opacity: 0.9;
+}
+
 .emailLink {
-  display: inline-flex; /* Use inline-flex to align items */
-  align-items: center; /* Vertically center the icon and text */
-  gap: 0.75rem;
+  display: inline-flex;
+  align-items: center;
   justify-content: center;
-  /* --- Core Styles --- */
-  margin-top: 1rem;
+  gap: 0.75rem;
   font-size: 1.1rem;
   font-weight: 500;
-  transition: var(--transition-smooth); /* For a smooth hover effect */
-  cursor: none; /* Keep the custom cursor */
-
-  /* --- New Shape & Border Styles --- */
-  padding: 0.75rem 1.5rem; /* Adds space inside the button */
-  border: 2px solid var(--accent-color); /* The border you wanted */
-  border-radius: 99px; /* This creates the oval/pill shape */
-  color: var(--accent-color); /* Text color matches the border */
-  background-color: transparent; /* Makes it a "ghost button" */
+  transition: var(--transition-smooth);
+  cursor: none;
+  padding: 0.75rem 1.5rem;
+  border: 2px solid var(--accent-color);
+  border-radius: 99px;
+  color: var(--accent-color);
+  background-color: transparent;
 }
 
-/* --- Add a hover effect to make it interactive --- */
 .emailLink:hover {
-  background-color: var(
-    --accent-color
-  ); /* Fills the button with the accent color */
-  color: var(--card-bg-color); /* Changes text to light color on hover */
-  transform: translateY(-2px); /* Slight lift effect */
+  background-color: var(--accent-color);
+  color: var(--card-bg-color);
+  transform: translateY(-2px);
 }
 
-.footerNav {
-  text-align: right;
+/* --- Footer Bar Styles --- */
+
+.footerBar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 1.5rem 0;
+}
+
+.copyright {
+  font-size: 0.9rem;
+  color: var(--text-color);
 }
 
 .socials {
   display: flex;
   gap: 1.5rem;
-  justify-content: flex-end;
-  margin-bottom: 1.5rem;
+  margin: 0 auto;
 }
 
 .socials a {
   color: var(--text-color);
+  transition: var(--transition-smooth);
 }
+
 .socials a:hover {
   color: var(--accent-color);
   transform: scale(1.2);
@@ -73,10 +88,11 @@
 .topLink {
   background: none;
   border: 1px solid var(--border-color);
-  color: var(--accent-color);
-  padding: 0.6rem 1.2rem;
+  color: var(--text-color);
+  padding: 0.5rem 1rem;
   border-radius: 99px;
   font-weight: 500;
+  font-size: 0.85rem;
   transition: var(--transition-smooth);
 }
 
@@ -86,7 +102,12 @@
   color: #fff;
 }
 
-.footerBottom {
-  text-align: center;
-  font-size: 0.9rem;
+@media (max-width: 600px) {
+  .footerBar {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  .socials {
+    order: -1;
+  }
 }

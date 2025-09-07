@@ -1,114 +1,111 @@
-/* src/components/Projects.module.css */
-.projectsGrid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 2rem;
-}
-
-.mainHeading {
-  text-align: center;
-  font-size: 2.5rem;
-  color: var(--accent-color);
-  margin-bottom: 3rem;
-  position: relative;
-}
-.projectCard {
-  width: 100%; /* Ensure the card fills the wrapper */
-
-  /* --- The Glassmorphism Effect --- */
-  background: var(--glass-bg);
-  backdrop-filter: blur(16px); /* A slightly stronger blur */
-  -webkit-backdrop-filter: blur(16px);
-  border: 1.5px solid rgba(148, 163, 184, 0.3);
-  box-shadow: 0 8px 32px 0 var(--shadow-color);
-  border-radius: var(--border-radius);
-
-  /* --- The Rendering Fix --- */
-  /* This CSS trick creates a new stacking context and forces the browser 
-     to render the backdrop-filter correctly within the 3D animation. */
-  transform: translateZ(0);
-
-  /* --- The Flexbox Fix for Equal Heights --- */
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-  transition: var(--transition-smooth);
-}
-
-.projectCard:hover {
-  box-shadow: 0 12px 24px var(--shadow-color);
-}
+/* src/components/Projects.module.css (New Version) */
 
 .headingContainer {
   display: flex;
   justify-content: center;
-  margin-bottom: 3rem; /* Add the space below the heading here */
+  margin-bottom: 3rem;
 }
 
-.imageContainer {
+/* --- Regular Project Card Styles --- */
+.projectsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2rem;
+  align-items: start;
+}
+
+.projectCard {
+  position: relative;
+  border-radius: var(--border-radius);
+  background: var(--card-bg-color);
+  box-shadow: 0 4px 16px var(--shadow-color);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  z-index: 1;
+}
+
+.projectCard:hover {
+  transform: scale(1.03);
+  box-shadow: 0 12px 40px -5px var(--shadow-color);
+  /* ✅ FIX: Increase z-index to bring the card above the footer and header */
+  z-index: 1000;
+}
+
+.cardImage {
+  display: block;
   width: 100%;
-  aspect-ratio: 16 / 10;
-  overflow: hidden;
+  aspect-ratio: 16 / 9;
+  /* ✅ FIX: Use 'contain' to show the full image without cropping */
+  object-fit: contain;
+  background-color: rgba(0, 0, 0, 0.2); /* Adds a background for letterboxing */
+  border-radius: var(--border-radius) var(--border-radius) 0 0;
 }
 
-.imageContainer img {
+.cardContentWrapper {
+  /* This wrapper contains all text content */
+}
+
+.cardHeader {
+  padding: 1rem 1.5rem;
+}
+
+.cardHeader h3 {
+  margin: 0;
+  color: var(--primary-color);
+  font-size: 1.25rem;
+}
+
+.cardDetails {
+  position: absolute;
+  top: 100%;
+  left: 0;
   width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.5s ease;
-}
 
-.projectCard:hover .imageContainer img {
-  transform: scale(1.05);
-}
+  opacity: 0;
+  transform: translateY(-20px) scale(0.98);
+  pointer-events: none;
 
-.cardContent {
+  background: var(--card-bg-color);
   padding: 1.5rem;
-  flex-grow: 1;
-  display: flex;
-  flex-direction: column;
+  border-radius: 0 0 var(--border-radius) var(--border-radius);
+  box-shadow: 0 20px 40px var(--shadow-color);
+  /* ✅ FIX: Give the overlay its own z-index to ensure it's on top and clickable */
+  z-index: 20;
+
+  transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
-.cardContent h3 {
-  margin-bottom: 0.75rem;
+.projectCard:hover .cardDetails {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  pointer-events: auto;
+}
+
+.cardDetails p {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  margin: 0 0 1rem 0;
+  color: var(--text-color);
 }
 
 .tags {
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
 }
 
 .tag {
-  background-color: var(--bg-color);
-  color: var(--accent-color);
+  background-color: rgba(255, 255, 255, 0.1);
+  color: var(--primary-color);
   font-size: 0.75rem;
-  font-weight: 600;
+  font-weight: 500;
   padding: 0.25rem 0.75rem;
   border-radius: 99px;
-  border: 1px solid var(--border-color);
-}
-
-.cardContent p {
-  margin-bottom: 1.5rem;
-  flex-grow: 1; /* Pushes links to the bottom */
-}
-
-.pinWrapper {
-  /* This is crucial for the 3D effect to have space */
-  perspective: 1000px;
-  display: flex;
-}
-
-.pinWrapper:hover {
-  box-shadow: 0 12px 24px var(--shadow-color);
 }
 
 .links {
   display: flex;
   gap: 1rem;
-  margin-top: auto; /* Aligns to the bottom */
 }
 
 .links a {
@@ -122,21 +119,19 @@
 
 .links a:hover {
   opacity: 0.9;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   transform: translateY(-2px);
 }
+/* --- Featured Project Styles (with subtle hover) --- */
 
 .featuredContainer {
-  margin-bottom: 4rem; /* Space between featured and regular projects */
+  margin-bottom: 4rem;
 }
 
 .featuredCard {
   display: grid;
-  grid-template-columns: repeat(12, 1fr); /* 12-column grid for layout */
+  grid-template-columns: repeat(12, 1fr);
   gap: 2rem;
   align-items: center;
-
-  /* Apply the same glass effect */
   background: var(--glass-bg);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
@@ -145,13 +140,18 @@
   border-radius: var(--border-radius);
   overflow: hidden;
   padding: 2rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Add transition */
+}
+
+.featuredCard:hover {
+  transform: translateY(-8px); /* Add subtle lift on hover */
+  box-shadow: 0 12px 40px -5px var(--shadow-color);
 }
 
 .featuredImageContainer {
-  grid-column: 1 / span 7; /* Image takes up ~60% of the width */
+  grid-column: 1 / span 7;
   border-radius: calc(var(--border-radius) - 4px);
   overflow: hidden;
-  box-shadow: 0 4px 15px var(--shadow-color);
 }
 
 .featuredImageContainer img {
@@ -162,7 +162,7 @@
 }
 
 .featuredCardContent {
-  grid-column: 8 / span 5; /* Content takes up ~40% */
+  grid-column: 8 / span 5;
 }
 
 .featuredBadge {
@@ -174,50 +174,12 @@
   letter-spacing: 0.5px;
 }
 
-/* Responsive adjustments for smaller screens */
+/* --- Responsive Styles --- */
+
 @media (max-width: 992px) {
   .featuredCard {
     display: flex;
     flex-direction: column;
     padding: 1.5rem;
-  }
-}
-@media (max-width: 600px) {
-  .projectsGrid {
-    grid-template-columns: 1fr;
-  }
-}
-@media (max-width: 400px) {
-  .cardContent {
-    padding: 1rem;
-  }
-
-  .links a {
-    padding: 0.5rem 1rem;
-    font-size: 0.9rem;
-  }
-}
-@media (max-width: 350px) {
-  .imageContainer {
-    aspect-ratio: 4 / 3;
-  }
-}
-@media (max-width: 320px) {
-  .cardContent h3 {
-    font-size: 1.1rem;
-  }
-
-  .tags {
-    gap: 0.25rem;
-  }
-
-  .tag {
-    font-size: 0.7rem;
-    padding: 0.2rem 0.5rem;
-  }
-
-  .links a {
-    padding: 0.4rem 0.8rem;
-    font-size: 0.85rem;
   }
 }
