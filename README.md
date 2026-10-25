@@ -1,12 +1,24 @@
-# React + Vite
+# Saiteja Challa · portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Live: https://saiteja2003.github.io/react-portfolio/
 
-Currently, two official plugins are available:
+**Concept: The Thread.** The page is one continuous thread. A spine on the left fills as you scroll and marks each chapter. On desktop the visitor holds a loose strand tied to the spine's tip, and clicking empty space slings a strand to the nearest heading. Each project chapter runs a browser port of that project's real logic: Vela's quality gate and spaced-recall schedule, Solum Trade OS's SHA-256 audit chain, and Honing's tailoring guard.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Develop
 
-## Expanding the ESLint configuration
+```bash
+npm install
+npm run dev      # local server
+npm run build    # production build into dist/
+npm run lint
+npm run deploy   # builds and publishes dist/ to the gh-pages branch
+```
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Where things live
+
+- `src/data/content.js` holds every claim on the site, with the file that backs it.
+- `src/lib/mechanisms.js` holds the ported project logic the demos run.
+- `src/components/Thread.jsx` draws the spine and the rope (one canvas, sleeps when idle).
+- `src/styles/global.css` holds the design tokens and all styles.
+
+Reduced-motion visitors, touch devices and anyone who switches the thread off get the same content with no rope, no smooth scrolling and no reveal animations.

@@ -1,27 +1,31 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>Saiteja Challa · Software engineer</title>
+    <meta
+      name="description"
+      content="Saiteja Challa builds full-stack, data-backed software where language models draft and deterministic code decides: Vela, Solum Trade OS, Honing and NexusReader."
+    />
+    <meta name="theme-color" content="#0d0c0b" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Saiteja Challa · Software engineer" />
+    <meta
+      property="og:description"
+      content="I build software that doesn't take the model's word for it. Four systems, each with a live demo of its real logic."
+    />
+    <meta property="og:url" content="https://saiteja2003.github.io/react-portfolio/" />
     <link rel="icon" type="image/svg+xml" href="/logo-sct.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Saiteja Challa - Portfolio</title>
-    <script>
-      (function () {
-        const theme = localStorage.getItem("theme");
-        const prefersDark = window.matchMedia(
-          "(prefers-color-scheme: dark)"
-        ).matches;
-
-        if (theme === "dark" || (!theme && prefersDark)) {
-          document.documentElement.setAttribute("data-theme", "dark");
-        } else {
-          document.documentElement.classList.add("light-mode-flash");
-        }
-      })();
-    </script>
   </head>
   <body>
     <div id="root"></div>
+    <noscript>
+      <p style="padding: 24px; font-family: system-ui; color: #ece7df; background: #0d0c0b">
+        Saiteja Challa, software engineer in Koblenz. This site needs JavaScript for its demos. Reach me at
+        challasaiteja26@gmail.com or github.com/Saiteja2003.
+      </p>
+    </noscript>
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>
