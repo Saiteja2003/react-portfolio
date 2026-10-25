@@ -88,7 +88,7 @@ export function Background() {
           Background
         </p>
         <h2 id="background-title" data-split>
-          From Andhra Pradesh to <em>Koblenz</em>.
+          From Telangana, India to <em>Koblenz</em>.
         </h2>
       </header>
       <div className="background__grid">

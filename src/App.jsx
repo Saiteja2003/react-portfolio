@@ -1,4 +1,4 @@
-import { useCallback, useState } from "react";
+import { useCallback, useRef, useState } from "react";
 import { useMotion } from "./motion/useMotion";
 import { projects } from "./data/content";
 import Cursor from "./components/Cursor";
@@ -23,6 +23,7 @@ const CHAPTERS = [
 export default function App() {
   const [lenis, setLenis] = useState(null);
   useMotion(setLenis);
+  const trip = useRef(0);
 
   const go = useCallback(
     (event, selector) => {
@@ -32,12 +33,40 @@ export default function App() {
       const reduced = window.matchMedia(
         "(prefers-reduced-motion: reduce)",
       ).matches;
-      if (lenis)
-        lenis.scrollTo(target, {
-          offset: selector === "#top" ? 0 : -24,
-          duration: 1.4,
-        });
-      else target.scrollIntoView({ behavior: reduced ? "auto" : "smooth" });
+      // Land on the section's own content, just under the floating nav,
+      // instead of at the top of its padding. The target is re-measured every
+      // frame, so images or demos loading on the way cannot cut the trip short.
+      const aim = () => {
+        if (selector === "#top") return 0;
+        const pad = parseFloat(getComputedStyle(target).paddingTop) || 0;
+        const max = document.documentElement.scrollHeight - window.innerHeight;
+        return Math.min(
+          max,
+          Math.max(
+            0,
+            target.getBoundingClientRect().top + window.scrollY + pad - 104,
+          ),
+        );
+      };
+      const set = (y) =>
+        lenis
+          ? lenis.scrollTo(y, { immediate: true, force: true })
+          : window.scrollTo(0, y);
+      cancelAnimationFrame(trip.current);
+      if (reduced) set(aim());
+      else {
+        const from = window.scrollY;
+        const dist = Math.abs(aim() - from);
+        const dur = Math.min(1400, 600 + dist * 0.12);
+        const t0 = performance.now();
+        const step = (now) => {
+          const t = Math.min(1, (now - t0) / dur);
+          const e = 1 - Math.pow(1 - t, 4);
+          set(from + (aim() - from) * e);
+          if (t < 1) trip.current = requestAnimationFrame(step);
+        };
+        trip.current = requestAnimationFrame(step);
+      }
       history.replaceState(
         null,
         "",

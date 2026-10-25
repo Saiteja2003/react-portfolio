@@ -10,6 +10,7 @@ const LINKS = [
 export default function Nav({ go }) {
   const [active, setActive] = useState("");
   const [scrolled, setScrolled] = useState(false);
+  const [open, setOpen] = useState(false);
 
   // Which section is under the middle of the viewport.
   useEffect(() => {
@@ -38,6 +39,14 @@ export default function Nav({ go }) {
     };
   }, []);
 
+  // Escape closes the phone menu.
+  useEffect(() => {
+    if (!open) return undefined;
+    const onKey = (e) => e.key === "Escape" && setOpen(false);
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [open]);
+
   useEffect(() => {
     let frame = 0;
     const onScroll = () => {
@@ -56,7 +65,9 @@ export default function Nav({ go }) {
   }, []);
 
   return (
-    <header className={`nav ${scrolled ? "is-scrolled" : ""}`}>
+    <header
+      className={`nav ${scrolled || open ? "is-scrolled" : ""} ${open ? "is-open" : ""}`}
+    >
       <a
         href="#top"
         className="nav__mark"
@@ -83,12 +94,15 @@ export default function Nav({ go }) {
         <span>Saiteja Challa</span>
       </a>
       <nav aria-label="Sections">
-        <ul className="nav__links">
+        <ul className="nav__links" id="nav-links">
           {LINKS.map(([href, label]) => (
             <li key={href}>
               <a
                 href={href}
-                onClick={(e) => go(e, href)}
+                onClick={(e) => {
+                  setOpen(false);
+                  go(e, href);
+                }}
                 aria-current={active === href ? "location" : undefined}
                 className={active === href ? "is-active" : ""}
               >
@@ -98,6 +112,17 @@ export default function Nav({ go }) {
           ))}
         </ul>
       </nav>
+
+      <button
+        className="nav__menu"
+        aria-expanded={open}
+        aria-controls="nav-links"
+        aria-label={open ? "Close menu" : "Open menu"}
+        onClick={() => setOpen((o) => !o)}
+      >
+        <span aria-hidden="true" />
+        <span aria-hidden="true" />
+      </button>
       <a
         className="nav__cta"
         href="#contact"
