@@ -52,6 +52,7 @@ export const projects = [
     period: "07/2026 – now",
     line: "A learning engine where Gemini drafts short lessons and a deterministic gate decides which ones learners ever see.",
     demo: "vela",
+    shot: { src: "images/vela.webp", w: 1910, h: 836, url: "vela-web-omega.vercel.app", alt: "Vela's stream screen showing a diagram of transport layers versus framing protocols, a group-the-items exercise, a daily goal of 2 of 5 completed and a one-day streak.", caption: "The Vela app: a card with a diagram, an active-recall exercise and the daily goal." },
     sections: [
       {
         h: "How it works",
@@ -124,6 +125,7 @@ export const projects = [
     period: "10/2026 – now",
     line: "A workspace that tailors a résumé to each job, where the AI may rephrase what you did but can never embellish it.",
     demo: "honing",
+    shot: { src: "images/honing.webp", w: 1917, h: 780, url: "Honing · Dashboard", alt: "Honing's pipeline board with Saved, Applied, Interviewing, Rejected and Offer columns of job application cards, each with a match percentage.", caption: "The Honing pipeline: twelve applications on a Kanban board, each with a match score." },
     sections: [
       {
         h: "Patches, not rewrites",
