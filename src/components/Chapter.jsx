@@ -1,4 +1,5 @@
 import { lazy, Suspense } from "react";
+import Shot from "./Shot";
 
 // Each project gets its own working mechanism, loaded when it's needed.
 const DEMOS = {
@@ -25,6 +26,12 @@ export default function Chapter({ project: p, flip }) {
         </div>
         <span className={`status ${p.status.startsWith("Shipped") ? "status--live" : ""}`}>{p.status}</span>
       </header>
+
+      {p.shot && (
+        <div className="chapter__shot" data-reveal>
+          <Shot {...p.shot} />
+        </div>
+      )}
 
       <div className="chapter__grid">
         <div className="chapter__text">
