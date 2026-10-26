@@ -9,38 +9,43 @@ export const person = {
   email: "challasaiteja26@gmail.com",
   github: "https://github.com/Saiteja2003",
   linkedin: "https://www.linkedin.com/in/saiteja-challa-124555228",
-  headline: ["I build AI products", "that verify their", "own output."],
+  headline: ["Full-stack engineer", "building reliable", "AI products."],
   intro:
-    "Full-stack engineer and M.Sc. Web & Data Science student at the University of Koblenz. Data pipelines, PostgreSQL backends and LLM features held to deterministic checks.",
+    "I design and ship data pipelines, PostgreSQL backends and LLM features, with the validation and tests that make them safe to put in front of users. Currently completing an M.Sc. in Web & Data Science at the University of Koblenz.",
 };
 
-// Shown one line at a time in the hero. Mechanism rows mirror the demos
-// below; test rows are real runs (25 Oct 2026).
+// Replayed line by line in the hero. Validation rows mirror the demos
+// below; test-suite rows are real runs (25 Oct 2026).
 export const verificationLog = [
   {
     project: "vela",
-    check: "quality gate · 6 checks",
+    check: "lesson quality gate",
     result: "published",
     ok: true,
   },
   {
     project: "honing",
-    check: "guard · “cut costs by 40%”",
-    result: "dropped",
+    check: "unsupported “40%” claim",
+    result: "rejected",
     ok: false,
   },
   {
     project: "solum",
-    check: "sha-256 event chain",
-    result: "verified",
+    check: "SHA-256 audit chain",
+    result: "intact",
     ok: true,
   },
-  { project: "solum", check: "npm test", result: "63/63 pass", ok: true },
-  { project: "honing", check: "vitest", result: "105/105 pass", ok: true },
+  { project: "solum", check: "test suite", result: "63/63 passing", ok: true },
+  {
+    project: "honing",
+    check: "test suite",
+    result: "105/105 passing",
+    ok: true,
+  },
   {
     project: "nexus",
-    check: "feed health · 12 feeds",
-    result: "0 purged",
+    check: "feed health check",
+    result: "0 removed",
     ok: true,
   },
 ];
@@ -53,15 +58,15 @@ export const projects = [
     icon: "images/brand/vela.webp",
     accent: "#2fd0ea",
     kind: "Micro-learning platform",
-    status: "In development · preview live",
+    status: "In development · public preview",
     period: "2026",
     purpose:
-      "Turns verified sources into short, interactive lessons with spaced review.",
+      "Turns trusted sources into short, interactive lessons with spaced repetition.",
     achievement:
-      "Lessons are generated offline and reach learners only after passing a deterministic six-check quality gate.",
+      "Lessons are generated offline and published only after passing a deterministic six-check quality gate.",
     proofs: [
       { v: "6", k: "quality checks per lesson" },
-      { v: "0", k: "live LLM calls in the feed" },
+      { v: "0", k: "live LLM calls in the lesson feed" },
       { v: "1→3→7", k: "day review intervals, then doubling" },
     ],
     stack: [
@@ -122,15 +127,15 @@ export const projects = [
     name: "Solum Trade OS",
     icon: "images/brand/solum.webp",
     accent: "#f5a524",
-    kind: "Operations system",
-    status: "Built · trades simulated so far",
+    kind: "Operations platform",
+    status: "Built · pre-launch",
     period: "2026",
     purpose:
-      "Back-office system for an agri-export venture, built around an auditable record of every business event.",
+      "Operations platform for an agri-export business, built on an auditable record of every transaction.",
     achievement:
-      "A tamper-evident audit trail: append-only events chained with SHA-256, with the chain head anchored outside the database every night.",
+      "Tamper-evident audit trail: append-only events, chained with SHA-256 and anchored outside the database every night.",
     proofs: [
-      { v: "66", k: "tables, all with row-level security" },
+      { v: "66", k: "tables under row-level security" },
       { v: "18", k: "versioned Supabase migrations" },
       { v: "63/63", k: "tests passing" },
     ],
@@ -176,17 +181,17 @@ export const projects = [
     name: "Honing",
     icon: "images/brand/honing.webp",
     accent: "#7b7bff",
-    kind: "Job application workspace",
-    status: "In development",
+    kind: "AI job-application workspace",
+    status: "In development · live app",
     period: "2026",
     purpose:
-      "Tailors a résumé to each role without fabricating a single claim.",
+      "Tailors a résumé to each job description without inventing a single claim.",
     achievement:
-      "Tailoring is a set of reviewable patches to an immutable master résumé; a guard drops any rewrite with numbers or skills it cannot trace.",
+      "Every edit is a reviewable patch to an immutable master résumé, and a guard rejects any rewrite that adds numbers or skills it cannot trace.",
     proofs: [
       { v: "105/105", k: "tests passing" },
       { v: "3", k: "LLM providers with fallback" },
-      { v: "8", k: "guard rejection types" },
+      { v: "8", k: "rejection rules in the guard" },
     ],
     stack: [
       "Next.js",
@@ -199,7 +204,7 @@ export const projects = [
       src: "images/honing.webp",
       w: 1917,
       h: 780,
-      url: "Honing · Dashboard",
+      url: "honing-kappa.vercel.app",
       alt: "Honing's pipeline board with Saved, Applied, Interviewing, Rejected and Offer columns of application cards, each with a match score.",
     },
     demo: "honing",
@@ -227,7 +232,9 @@ export const projects = [
       "src/lib/llm/gateway.ts",
       "docs/audit/HONING-IMPLEMENTATION-AUDIT.md",
     ],
-    links: [],
+    links: [
+      { label: "Open live app", href: "https://honing-kappa.vercel.app/" },
+    ],
     source: "private",
   },
   {
@@ -239,13 +246,13 @@ export const projects = [
     status: "Shipped · live",
     period: "2025",
     purpose:
-      "A three-pane news reader that brings your feeds into one place, with on-demand article summaries.",
+      "A three-pane RSS reader that gathers your feeds in one place, with on-demand AI summaries.",
     achievement:
-      "Shipped end to end: React client, Express 5 and MongoDB API with JWT auth, and a daily job that prunes dead feeds.",
+      "Shipped end to end: React client, Express 5 and MongoDB API with JWT auth, and a scheduled job that removes dead feeds.",
     proofs: [
       { v: "Live", k: "at nexusreader.org" },
       { v: "12", k: "curated feeds monitored" },
-      { v: "Daily", k: "feed health check" },
+      { v: "Daily", k: "automated feed health check" },
     ],
     stack: ["React", "Vite", "Express", "MongoDB", "JWT", "Gemini"],
     shot: {
@@ -290,22 +297,23 @@ export const projects = [
 
 export const principles = [
   {
-    title: "The model drafts. Code decides.",
-    body: "Generated content ships only after deterministic checks pass.",
+    title: "Validate model output in code.",
+    body: "AI-generated content is published only after deterministic checks pass.",
     code: `if original_quote not in raw_source_text:
     return False, 0, "Provenance failed"`,
     src: "Vela · quality_gate.py",
   },
   {
-    title: "Every claim is traceable.",
-    body: "Rewrites that add numbers or skills absent from the source are dropped.",
-    code: `// The prompt asks the model not to invent anything;
-// this code does not take its word for it.`,
+    title: "Make every claim traceable.",
+    body: "Generated text that introduces numbers or skills missing from the source is rejected.",
+    code: `const number = newNumberIn(text, numbersIn(original));
+if (number) {
+  rejections.push({ kind: "unearned_number", … });`,
     src: "Honing · guard.ts",
   },
   {
-    title: "History is append-only.",
-    body: "Critical records are hash-chained and anchored outside the database.",
+    title: "Keep critical history immutable.",
+    body: "Business events are append-only, hash-chained and anchored outside the database.",
     code: `if tg_op <> 'INSERT' then
   raise exception 'events are append-only';`,
     src: "Solum · core.sql",
@@ -316,9 +324,9 @@ export const strengths = [
   "Data pipelines",
   "PostgreSQL & row-level security",
   "LLM integration & output validation",
-  "Testing & CI",
+  "Automated testing & CI/CD",
   "React & Next.js",
-  "Cloud & automation",
+  "AWS & Azure",
 ];
 
 export const experience = [

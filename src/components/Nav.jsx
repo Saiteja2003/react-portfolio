@@ -4,7 +4,6 @@ const LINKS = [
   ["#work", "Work"],
   ["#approach", "Approach"],
   ["#background", "Background"],
-  ["#contact", "Contact"],
 ];
 
 export default function Nav({ go }) {

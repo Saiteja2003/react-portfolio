@@ -16,7 +16,7 @@ export function WorkIntro() {
         Selected work · 2025 – 2026
       </p>
       <h2 id="work-title" data-split>
-        Four systems, each with its <em>real logic</em> running below.
+        Products I’ve designed and built <em>end to end</em>.
       </h2>
     </header>
   );
@@ -31,10 +31,10 @@ export function Approach() {
     >
       <header className="section-head">
         <p className="eyebrow" data-rise>
-          Approach
+          Engineering approach
         </p>
         <h2 id="approach-title" data-split>
-          Three rules behind <em>every system</em>.
+          How I build <em>reliable software</em>.
         </h2>
       </header>
       <ol className="principles" data-rise>
@@ -152,10 +152,10 @@ export function Contact() {
         Contact
       </p>
       <h2 id="contact-title" className="contact__title" data-split>
-        Let’s build something <em>you can verify</em>.
+        Let’s build something <em>reliable</em> together.
       </h2>
       <p className="contact__sub" data-rise>
-        Open to software engineering roles and collaborations. Based in{" "}
+        Open to software engineering and working-student roles. Based in{" "}
         {person.location}.
       </p>
       <div className="contact__actions" data-rise>

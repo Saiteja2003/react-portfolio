@@ -4,14 +4,13 @@ import { gsap } from "../motion/useMotion";
 /**
  * The thread, in miniature: a ring trails the pointer, tied to it by a
  * hairline that stretches when you move quickly and goes slack at rest.
- * Over [data-cursor] areas the ring opens and names the action; over
+ * Over links and buttons the ring tightens and turns signal-coloured; over
  * [data-magnetic] controls it pulls them a few pixels toward the pointer.
  * The native cursor stays visible. Runs on GSAP's ticker only while moving.
  */
 export default function Cursor() {
   const ringRef = useRef(null);
   const lineRef = useRef(null);
-  const labelRef = useRef(null);
 
   useEffect(() => {
     const fine = window.matchMedia(
@@ -24,7 +23,6 @@ export default function Cursor() {
 
     const ring = ringRef.current;
     const line = lineRef.current;
-    const label = labelRef.current;
     const pos = { x: -100, y: -100 };
     const xTo = gsap.quickTo(ring, "x", { duration: 0.55, ease: "power3" });
     const yTo = gsap.quickTo(ring, "y", { duration: 0.55, ease: "power3" });
@@ -91,13 +89,10 @@ export default function Cursor() {
     };
 
     const onOver = (e) => {
-      const zone = e.target.closest?.("[data-cursor]");
       const hot = e.target.closest?.(
         "a, button, [role='tab'], [role='radio'], summary",
       );
-      ring.classList.toggle("is-label", !!zone && !hot);
       ring.classList.toggle("is-hot", !!hot);
-      label.textContent = zone && !hot ? zone.dataset.cursor : "";
     };
 
     const onLeave = () => {
@@ -128,9 +123,7 @@ export default function Cursor() {
       <svg className="cursor__thread">
         <line ref={lineRef} />
       </svg>
-      <div className="cursor__ring" ref={ringRef}>
-        <span ref={labelRef} />
-      </div>
+      <div className="cursor__ring" ref={ringRef} />
     </div>
   );
 }

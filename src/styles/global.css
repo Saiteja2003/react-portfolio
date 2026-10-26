@@ -485,23 +485,6 @@ main,
   text-transform: uppercase;
   color: var(--muted);
 }
-.hero__dot {
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: var(--pass);
-  box-shadow: 0 0 0 0 rgba(143, 217, 154, 0.5);
-  animation: ping 2.4s var(--ease-out) infinite;
-}
-@keyframes ping {
-  0% {
-    box-shadow: 0 0 0 0 rgba(143, 217, 154, 0.45);
-  }
-  70%,
-  100% {
-    box-shadow: 0 0 0 10px rgba(143, 217, 154, 0);
-  }
-}
 .hero__title {
   font-family: var(--serif);
   font-weight: 400;
@@ -600,28 +583,6 @@ main,
   height: 9px;
   border-radius: 50%;
   background: var(--line-strong);
-}
-.vlog__live {
-  margin-left: auto;
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  color: var(--pass);
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-}
-.vlog__live::before {
-  content: "";
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: currentColor;
-  animation: blink 1.6s steps(2, jump-none) infinite;
-}
-@keyframes blink {
-  50% {
-    opacity: 0.2;
-  }
 }
 .vlog__rows {
   display: grid;
@@ -1840,34 +1801,8 @@ main,
   border-color: var(--signal);
   background: rgba(255, 90, 54, 0.08);
 }
-.cursor__ring.is-label::before {
-  transform: scale(1);
-  background: var(--signal);
-  border-color: var(--signal);
-}
 .cursor__ring.is-down::before {
   transform: scale(0.32);
-}
-.cursor__ring.is-label.is-down::before {
-  transform: scale(0.9);
-}
-.cursor__ring span {
-  position: relative;
-  font-family: var(--mono);
-  font-size: 0.66rem;
-  font-weight: 600;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: var(--ink);
-  opacity: 0;
-  transform: scale(0.6);
-  transition:
-    opacity 0.25s var(--ease-out),
-    transform 0.45s var(--ease-out);
-}
-.cursor__ring.is-label span {
-  opacity: 1;
-  transform: none;
 }
 @media (hover: none), (pointer: coarse) {
   .cursor {
@@ -1968,7 +1903,8 @@ main,
     border-radius: 24px;
   }
   .nav__cta {
-    display: none;
+    min-height: 38px;
+    padding: 8px 14px;
   }
   .nav__mark {
     margin-right: auto;
@@ -2013,8 +1949,15 @@ main,
   .hero__strands {
     opacity: 0.45;
   }
-  .hero__br {
+  .hero__br,
+  .hero__name {
     display: none;
+  }
+  .nav__cta {
+    order: 1;
+  }
+  .nav__menu {
+    order: 2;
   }
   .hero__glow {
     width: 120vw;

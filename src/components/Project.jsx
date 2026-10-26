@@ -74,7 +74,7 @@ function Stage({ p }) {
               aria-controls={`${tabsId}-panel`}
               onClick={() => setView("demo")}
             >
-              Live logic · {p.demoLabel}
+              Interactive demo
             </button>
           </div>
         )}
@@ -84,7 +84,6 @@ function Stage({ p }) {
           id={`${tabsId}-panel`}
           role={views.length > 1 ? "tabpanel" : undefined}
           aria-labelledby={views.length > 1 ? `${tabsId}-${view}` : undefined}
-          data-cursor={view === "demo" ? "Try it" : undefined}
         >
           {view === "product" ? (
             <Shot {...p.shot} />
@@ -137,7 +136,7 @@ function Details({ p }) {
             ))}
           </dl>
           <div className="details__evidence">
-            <p className="eyebrow">Where to check it</p>
+            <p className="eyebrow">Key source files</p>
             <ul>
               {p.evidence.map((e) => (
                 <li key={e}>

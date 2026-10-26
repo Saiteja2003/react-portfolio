@@ -71,7 +71,7 @@ function VerifyLog() {
       className="vlog"
       ref={ref}
       data-intro
-      aria-label="Checks from the projects below"
+      aria-label="Validation and test results from the projects below"
     >
       <div className="vlog__bar">
         <span className="vlog__dots" aria-hidden="true">
@@ -79,10 +79,7 @@ function VerifyLog() {
           <i />
           <i />
         </span>
-        <span>checks</span>
-        <span className="vlog__live" aria-hidden="true">
-          live
-        </span>
+        <span>validation &amp; test log</span>
       </div>
       <ol className="vlog__rows">
         {verificationLog.map((row, i) => (
@@ -149,8 +146,8 @@ export default function Hero({ go }) {
 
       <div className="hero__content">
         <p className="hero__eyebrow">
-          <span className="hero__dot" aria-hidden="true" />
-          {person.name} · {person.role} · {person.location}
+          <span className="hero__name">{person.name} · </span>
+          {person.role} · {person.location}
         </p>
         <h1 id="hero-title" className="hero__title">
           {person.headline[0]} <br className="hero__br" />
@@ -169,15 +166,16 @@ export default function Hero({ go }) {
                 onClick={(e) => go(e, "#work")}
                 data-magnetic
               >
-                View selected work
+                View my work
               </a>
               <a
-                href="#contact"
+                href={person.github}
                 className="btn"
-                onClick={(e) => go(e, "#contact")}
+                target="_blank"
+                rel="noopener noreferrer"
                 data-magnetic
               >
-                Contact
+                GitHub <span aria-hidden="true">↗</span>
               </a>
             </div>
             <ul className="hero__projects" data-intro aria-label="Projects">
